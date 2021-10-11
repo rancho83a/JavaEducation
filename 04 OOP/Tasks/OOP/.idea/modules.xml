@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DESIGN_PATTERNS/DESIGN_PATTERNS.iml" filepath="$PROJECT_DIR$/DESIGN_PATTERNS/DESIGN_PATTERNS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DesignPatterns-Ex/DesignPatterns-Ex.iml" filepath="$PROJECT_DIR$/DesignPatterns-Ex/DesignPatterns-Ex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Encapsulation - Exercises/Encapsulation - Exercises.iml" filepath="$PROJECT_DIR$/Encapsulation - Exercises/Encapsulation - Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Encapsulation - Lab/Encapsulation - Lab.iml" filepath="$PROJECT_DIR$/Encapsulation - Lab/Encapsulation - Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Exceptions/Exceptions.iml" filepath="$PROJECT_DIR$/Exceptions/Exceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ForexWorkshop/ForexWorkshop.iml" filepath="$PROJECT_DIR$/ForexWorkshop/ForexWorkshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Inheritance - Exercises/Inheritance - Exercises.iml" filepath="$PROJECT_DIR$/Inheritance - Exercises/Inheritance - Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Inheritance - Lab/Inheritance - Lab.iml" filepath="$PROJECT_DIR$/Inheritance - Lab/Inheritance - Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Interfaces and Abstraction - Exercises/Interfaces and Abstraction - Exercises.iml" filepath="$PROJECT_DIR$/Interfaces and Abstraction - Exercises/Interfaces and Abstraction - Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Interfaces and Abstraction - Lab/Interfaces and Abstraction - Lab.iml" filepath="$PROJECT_DIR$/Interfaces and Abstraction - Lab/Interfaces and Abstraction - Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/OOP.iml" filepath="$PROJECT_DIR$/.idea/OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Polymorphism - Exercises/Polymorphism - Exercises.iml" filepath="$PROJECT_DIR$/Polymorphism - Exercises/Polymorphism - Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Polymorphism - Lab/Polymorphism - Lab.iml" filepath="$PROJECT_DIR$/Polymorphism - Lab/Polymorphism - Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reflection - Exercises/Reflection - Exercises.iml" filepath="$PROJECT_DIR$/Reflection - Exercises/Reflection - Exercises.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Reflection - Lab/Reflection - Lab.iml" filepath="$PROJECT_DIR$/Reflection - Lab/Reflection - Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Repeat/Repeat.iml" filepath="$PROJECT_DIR$/Repeat/Repeat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SOLID/SOLID.iml" filepath="$PROJECT_DIR$/SOLID/SOLID.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UnitTesting-Lab/UnitTesting-Lab.iml" filepath="$PROJECT_DIR$/UnitTesting-Lab/UnitTesting-Lab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Working with Abstraction - Exercise/Working with Abstraction - Exercise.iml" filepath="$PROJECT_DIR$/Working with Abstraction - Exercise/Working with Abstraction - Exercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Working with Abstraction - Lab/Working with Abstraction - Lab.iml" filepath="$PROJECT_DIR$/Working with Abstraction - Lab/Working with Abstraction - Lab.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/01_Java-OOP-Working-with-Abstraction-Exercise-Resources.iml" filepath="$PROJECT_DIR$/.idea/01_Java-OOP-Working-with-Abstraction-Exercise-Resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Enum/Enum.iml" filepath="$PROJECT_DIR$/Enum/Enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HotelReservation2/HotelReservation.iml" filepath="$PROJECT_DIR$/HotelReservation2/HotelReservation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Rectangle/Rectangle.iml" filepath="$PROJECT_DIR$/Rectangle/Rectangle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Students/Students.iml" filepath="$PROJECT_DIR$/Students/Students.iml" />
+    </modules>
+  </component>
+</project>
