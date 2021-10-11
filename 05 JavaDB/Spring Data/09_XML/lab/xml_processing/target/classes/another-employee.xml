@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employee first_name="OT" last_name="Serializer XML FILE ">
+    <salary>8888</salary>
+    <address>2SerializerFILEAddresss2</address>
+</employee>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<managers>
+    <manager first_name="f1" last_name="l1">
+        <subordinates>
+            <employee first_name="f2" income="2222.00" last_name="l2"/>
+            <employee first_name="f3" income="3333.00" last_name="l3"/>
+        </subordinates>
+    </manager>
+    <manager first_name="f2" last_name="l2">
+        <subordinates/>
+    </manager>
+    <manager first_name="f3" last_name="l3">
+        <subordinates>
+            <employee first_name="f4" income="444.00" last_name="l4"/>
+        </subordinates>
+    </manager>
+    <manager first_name="f4" last_name="l4">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo" last_name="Employe">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo" last_name="Employe">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo" last_name="Employe">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo2" last_name="Employee2">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo" last_name="Employe">
+        <subordinates/>
+    </manager>
+    <manager first_name="Novo" last_name="Employe">
+        <subordinates/>
+    </manager>
+    <manager>
+        <subordinates/>
+    </manager>
+    <manager first_name="OT" last_name="XML :-)">
+        <subordinates/>
+    </manager>
+    <manager first_name="OT2" last_name="2XML :-)">
+        <subordinates/>
+    </manager>
+    <manager first_name="OT" last_name="XML FILE">
+        <subordinates/>
+    </manager>
+</managers>

@@ -1,0 +1,43 @@
+За да се тества add/edit/delete трябва да има логнат юзер и да е админ (първия записан юзер в базата автоматично е админ)
+За да се тества OwnedGames - трябва първо юзера да си купи игри с метода purchasegame|<gameName>.Разбира се, предварително в 
+базата трябва да има игра с такова название (добавяте ръчно игри в базата или с addGame method)
+
+
+За регистрация:
+RegisterUser|ivan@ivan.com|Ivan12|Ivan12|Iva
+
+За логване
+LoginUser|ivan@ivan.com|Ivan12
+
+За редактиране на игра с ИД=2 :
+EditGame|1|date=22-11-2011|price=110.00|size=11.0|description=??????????????!!!!!!!!!!
+
+
+DeleteGame|2
+
+AddGame|Overwatch|100.00|15.5|FqnKB22pOC0|https://us.battle.net/forums/static/images/social-thumbs/overwatch.png|Overwatch is a team-based multiplayer online first-person shooter video game developed and published by Blizzard Entertainment.|24-05-2016
+
+Функцията AddGame -не работи! Оказа се, че е объркано в конструктора:
+това е твоя: GameAddDto gameAddDto = new GameAddDto(commands[1],new BigDecimal(commands[2]),Double.parseDouble(commands[4]),
+                             commands[5],commands[6],LocalDate.parse(commands[7], DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+
+а трябва: GameAddDto gameAddDto = new GameAddDto(commands[1],new BigDecimal(commands[2]),Double.parseDouble(commands[3]),commands[4],                             commands[5],commands[6],LocalDate.parse(commands[7], DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+ 
+Парсваш ДАБЛ на commands[4],  а трябва на commands[3] и после изпускаш commands[4] - description
+Тотална мешавица.
+След като го оправих, почва да вкарва игри в базата.
+Обаче има проверка само дали си ЛОГНАТ, а по условие трябва дали си още и АДМИН(тази проверка отсъства и за 3 те функционалности: add/edit/delete)
+
+Не реализирана функцията OwnedGames.
+
+Оценка (трябваше да се реализират 9 функционалности)
+1  - 10  - register
+2 -10 - login
+3-10 -logout
+4-9 - addGame
+5-9 -editGame
+6-9 - deleteGame
+7-10 - AllGame
+8-10 - DetailGame
+9-0 -OwnedGame
+Общо: 77/9 = 8.56

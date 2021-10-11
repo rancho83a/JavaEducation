@@ -1,0 +1,69 @@
+[
+  {
+    "subOrdinates": [
+      {
+        "salary": 2222.00,
+        "firstName": "f2",
+        "lastName": "l2"
+      },
+      {
+        "salary": 3333.00,
+        "firstName": "f3",
+        "lastName": "l3"
+      }
+    ],
+    "firstName": "f1",
+    "lastName": "l1"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "f2",
+    "lastName": "l2"
+  },
+  {
+    "subOrdinates": [
+      {
+        "salary": 444.00,
+        "firstName": "f4",
+        "lastName": "l4"
+      }
+    ],
+    "firstName": "f3",
+    "lastName": "l3"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "f4",
+    "lastName": "l4"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo",
+    "lastName": "Employe"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo",
+    "lastName": "Employe"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo",
+    "lastName": "Employe"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo2",
+    "lastName": "Employee2"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo",
+    "lastName": "Employe"
+  },
+  {
+    "subOrdinates": [],
+    "firstName": "Novo",
+    "lastName": "Employe"
+  }
+]
