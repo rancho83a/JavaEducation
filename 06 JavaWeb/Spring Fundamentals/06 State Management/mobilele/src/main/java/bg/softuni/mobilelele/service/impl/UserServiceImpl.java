@@ -28,16 +28,31 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> userEntityOpt = userRepository.findByUsername(loginServiceModel.getUsername());
 
         if (userEntityOpt.isEmpty()) {
+            this.logout();
             return false;
         } else {
-            return passwordEncoder.matches(
+            boolean success = passwordEncoder.matches(
                     loginServiceModel.getRowPassword(), userEntityOpt.get().getPassword());
+
+            if(success){
+                UserEntity loggedInUser = userEntityOpt.get();
+
+                currentUser.setLoggedIn(true).
+                        setUserName(loggedInUser.getUsername())
+                        .setFirstName(loggedInUser.getFirstName())
+                        .setLastName(loggedInUser.getLastName());
+
+
+
+            }
+
+            return success;
         }
     }
 
     @Override
     public void logout() {
         currentUser.clean();
-
+    }
 
 }
