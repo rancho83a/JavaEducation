@@ -17,12 +17,10 @@ import java.util.List;
 public class DBInit implements CommandLineRunner {
 
     private final BrandRepository brandRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
 
-    public DBInit(BrandRepository brandRepository, UserRepository userRepository,  UserService userService) {
+    public DBInit(BrandRepository brandRepository,  UserService userService) {
         this.brandRepository = brandRepository;
-        this.userRepository = userRepository;
         this.userService = userService;
     }
 
