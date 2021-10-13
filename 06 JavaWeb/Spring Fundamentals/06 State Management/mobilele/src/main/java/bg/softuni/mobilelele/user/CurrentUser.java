@@ -6,7 +6,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class CurrentUser {
-    private boolean isLoggedIn;
+    private boolean loggedIn;
     private String userName;
     private String firstName;
     private String lastName;
@@ -16,11 +16,11 @@ public class CurrentUser {
     }
 
     public boolean isLoggedIn() {
-        return isLoggedIn;
+        return loggedIn;
     }
 
     public CurrentUser setLoggedIn(boolean loggedIn) {
-        isLoggedIn = loggedIn;
+        this.loggedIn = loggedIn;
         return this;
     }
 
