@@ -8,4 +8,5 @@ import org.springframework.stereotype.Service;
 public interface UserService {
     boolean login (UserLoginServiceModel loginServiceModel);
     void logout();
+    void initializeUsersAndRoles();
 }

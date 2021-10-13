@@ -23,6 +23,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void initializeUsersAndRoles() {
+        if (userRepository.count() == 0) {
+            UserEntity admin = new UserEntity();
+            admin.setActive(true)
+                    .setFirstName("Admin")
+                    .setLastName("Adminov")
+                    .setPassword(passwordEncoder.encode("test"))
+                    .setUsername("admin");
+            userRepository.save(admin);
+        }
+    }
+
+    @Override
     public boolean login(UserLoginServiceModel loginServiceModel) {
 
         Optional<UserEntity> userEntityOpt = userRepository.findByUsername(loginServiceModel.getUsername());
@@ -34,16 +47,13 @@ public class UserServiceImpl implements UserService {
             boolean success = passwordEncoder.matches(
                     loginServiceModel.getRowPassword(), userEntityOpt.get().getPassword());
 
-            if(success){
+            if (success) {
                 UserEntity loggedInUser = userEntityOpt.get();
 
                 currentUser.setLoggedIn(true).
                         setUserName(loggedInUser.getUsername())
                         .setFirstName(loggedInUser.getFirstName())
                         .setLastName(loggedInUser.getLastName());
-
-
-
             }
 
             return success;
