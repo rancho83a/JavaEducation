@@ -4,6 +4,7 @@ import bg.softuni.mobilelele.model.entity.UserEntity;
 import bg.softuni.mobilelele.model.entity.UserRoleEntity;
 import bg.softuni.mobilelele.model.entity.enums.UserRoleEnum;
 import bg.softuni.mobilelele.model.service.UserLoginServiceModel;
+import bg.softuni.mobilelele.model.service.UserRegistrationServiceModel;
 import bg.softuni.mobilelele.repository.UserRepository;
 import bg.softuni.mobilelele.repository.UserRoleRepository;
 import bg.softuni.mobilelele.service.UserService;
@@ -33,6 +34,30 @@ public class UserServiceImpl implements UserService {
     public void initializeUsersAndRoles() {
         initializeRoles();
         initializeUsers();
+
+    }
+
+    @Override
+    public void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel) {
+        UserEntity newUser = new UserEntity()
+                .setUsername(userRegistrationServiceModel.getUsername())
+                .setFirstName(userRegistrationServiceModel.getFirstName())
+                .setLastName(userRegistrationServiceModel.getLastName())
+                .setActive(true)
+                .setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()))
+                .setRoles(Set.of(userRoleRepository.findByName(UserRoleEnum.USER)));
+
+        userRepository.save(newUser);
+
+        setCurrentUser(newUser);
+
+    }
+
+    private void setCurrentUser(UserEntity user) {
+        currentUser.setLoggedIn(true).
+                setUserName(user.getUsername())
+                .setFirstName(user.getFirstName())
+                .setLastName(user.getLastName());
 
     }
 
@@ -87,10 +112,8 @@ public class UserServiceImpl implements UserService {
             if (success) {
                 UserEntity loggedInUser = userEntityOpt.get();
 
-                currentUser.setLoggedIn(true).
-                        setUserName(loggedInUser.getUsername())
-                        .setFirstName(loggedInUser.getFirstName())
-                        .setLastName(loggedInUser.getLastName());
+                setCurrentUser(loggedInUser);
+
                 loggedInUser.getRoles()
                         .forEach(r->currentUser.addRole(r.getName()));
             }
