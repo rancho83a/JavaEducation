@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public boolean isUserNameFree(String username) {
+        return userRepository.findByUsernameIgnoreCase(username).isEmpty();
+    }
+
     private void setCurrentUser(UserEntity user) {
         currentUser.setLoggedIn(true).
                 setUserName(user.getUsername())
@@ -115,7 +120,7 @@ public class UserServiceImpl implements UserService {
                 setCurrentUser(loggedInUser);
 
                 loggedInUser.getRoles()
-                        .forEach(r->currentUser.addRole(r.getName()));
+                        .forEach(r -> currentUser.addRole(r.getName()));
             }
 
             return success;

@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserRegistrationController {
-
     private final UserService userService;
     private final ModelMapper modelMapper;
 
@@ -21,8 +19,8 @@ public class UserRegistrationController {
         this.modelMapper = modelMapper;
     }
 
-        @GetMapping("/users/register")
-    public String registerUser(){
+    @GetMapping("/users/register")
+    public String registerUser() {
         return "auth-register";
     }
 
@@ -41,13 +39,18 @@ public class UserRegistrationController {
 //    }
 
     @PostMapping("/users/register")
-    public String register(UserRegistrationBindingModel userRegistrationBindingModel) {
-
+    public String register(UserRegistrationBindingModel userRegistrationBindingModel, Model model) {
 
         UserRegistrationServiceModel userRegistrationServiceModel = modelMapper.map(userRegistrationBindingModel, UserRegistrationServiceModel.class);
+        // TODO - add to flash attributes
 
-        userService.registerAndLoginUser(userRegistrationServiceModel);
 
+        if (!userService.isUserNameFree(userRegistrationServiceModel.getUsername())) {
+            model.addAttribute("userNameOccupied", true);
+            return "redirect:/users/register";
+        } else {
+            userService.registerAndLoginUser(userRegistrationServiceModel);
+        }
         return "redirect:/";
     }
 }

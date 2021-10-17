@@ -12,4 +12,6 @@ public interface UserService {
     void initializeUsersAndRoles();
 
     void registerAndLoginUser(UserRegistrationServiceModel userRegistrationServiceModel);
+
+    boolean isUserNameFree(String username);
 }
