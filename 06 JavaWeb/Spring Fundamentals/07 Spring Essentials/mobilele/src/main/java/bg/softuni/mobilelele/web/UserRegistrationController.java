@@ -5,7 +5,6 @@ import bg.softuni.mobilelele.model.service.UserRegistrationServiceModel;
 import bg.softuni.mobilelele.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,7 +30,7 @@ public class UserRegistrationController {
 
     @GetMapping("/users/register")
     public String registerUser() {
-        return "auth-registermy";
+        return "auth-register";
     }
 
 //    //Variant za ModelView
@@ -53,8 +52,7 @@ public class UserRegistrationController {
 
             @Valid UserRegistrationBindingModel userModel,  // throw 404 error
             BindingResult bindingResult, // contains errors of previous validation; injectirane vednaga sled @Valid!!!
-            RedirectAttributes redirectAttributes,
-            Model model) {
+            RedirectAttributes redirectAttributes) {
 
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("userModel", userModel);
@@ -67,7 +65,9 @@ public class UserRegistrationController {
 
 
         if (!userService.isUserNameFree(userRegistrationServiceModel.getUsername())) {
-            model.addAttribute("userNameOccupied", true);
+            redirectAttributes.addFlashAttribute("userModel", userModel);
+            redirectAttributes.addFlashAttribute("userNameOccupied", true);
+
             return "redirect:/users/register";
         } else {
             userService.registerAndLoginUser(userRegistrationServiceModel);
