@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 
 public class OffersSummaryView {
+    private Long id;
 
     private String imageUrl;
 
@@ -24,6 +25,15 @@ public class OffersSummaryView {
     private BigDecimal price;
     private EngineEnum engine;
     private TransmissionEnum transmission;
+
+    public Long getId() {
+        return id;
+    }
+
+    public OffersSummaryView setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public String getImageUrl() {
         return imageUrl;

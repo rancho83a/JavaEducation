@@ -8,6 +8,7 @@ import bg.softuni.mobilelele.repository.ModelRepository;
 import bg.softuni.mobilelele.repository.OfferRepository;
 import bg.softuni.mobilelele.repository.UserRepository;
 import bg.softuni.mobilelele.service.OfferService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,11 +20,13 @@ public class OfferServiceImpl implements OfferService {
     private final OfferRepository offerRepository;
     private final ModelRepository modelRepository;
     private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-    public OfferServiceImpl(OfferRepository offerRepository, ModelRepository modelRepository, UserRepository userRepository) {
+    public OfferServiceImpl(OfferRepository offerRepository, ModelRepository modelRepository, UserRepository userRepository, ModelMapper modelMapper) {
         this.offerRepository = offerRepository;
         this.modelRepository = modelRepository;
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -64,15 +67,21 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<OffersSummaryView> getAllOffers() {
 
+        List<OfferEntity> all = offerRepository.findAll();
 
-        return offerRepository.findAll().stream()
+        List<OffersSummaryView> collect = offerRepository.findAll().stream()
                 .map(this::map)
                 .collect(Collectors.toList());
+
+
+        return collect;
     }
 
     private OffersSummaryView map(OfferEntity offerEntity){
-        //TODO
+        OffersSummaryView summaryView = modelMapper.map(offerEntity, OffersSummaryView.class);
+        summaryView.setBrand(offerEntity.getModel().getBrand().getName());
+        summaryView.setModel(offerEntity.getModel().getName());
 
-        return new OffersSummaryView();
+        return summaryView;
     }
 }
