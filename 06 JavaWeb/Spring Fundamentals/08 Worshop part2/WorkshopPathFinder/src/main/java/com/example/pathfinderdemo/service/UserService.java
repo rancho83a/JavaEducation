@@ -8,4 +8,5 @@ public interface UserService {
     UserServiceModel findUserByUsernameAndPassword(String username, String password);
 
     void loginUser(Long id, String username);
+    void logoutUser();
 }
