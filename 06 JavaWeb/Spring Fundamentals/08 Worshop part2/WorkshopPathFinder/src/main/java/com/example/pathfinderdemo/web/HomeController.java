@@ -10,7 +10,11 @@ public class HomeController {
     //na kou route da slysha:
     @GetMapping("/")
     public String index(){
-        System.out.println();
         return "index";
+    }
+
+    @GetMapping("/about")
+    public String about(){
+        return "about";
     }
 }

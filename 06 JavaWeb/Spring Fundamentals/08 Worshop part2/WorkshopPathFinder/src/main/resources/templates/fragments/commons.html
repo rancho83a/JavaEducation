@@ -38,12 +38,13 @@
       <li>
     </th:block>
 
-      <th:block th:unless ="${@currentUser.id == null}">
+      <th:block th:unless ="${@currentUser.id == null}" th:object="${currentUser}">
 
         <a href="/routes/add">Add new route</a>
         </li>
         <li>
           <a th:href="@{/users/profile/{id}(id=${@currentUser.id})  }">Profile</a>
+         <!-- <a th:href="@{/users/profile/{id}(id= *{id})  }">Profile</a> -->
         </li>
         <li>
           <a href="/admin">Admin</a>
