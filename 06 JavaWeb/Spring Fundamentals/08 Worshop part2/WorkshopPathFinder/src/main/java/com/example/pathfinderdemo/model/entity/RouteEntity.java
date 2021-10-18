@@ -23,7 +23,7 @@ public class RouteEntity extends BaseEntity {
     public RouteEntity() {
     }
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
     public Set<PictureEntity> getPictures() {
         return pictures;
     }
@@ -33,7 +33,7 @@ public class RouteEntity extends BaseEntity {
         return this;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<CategoryEntity> getCategories() {
         return categories;
     }

@@ -65,6 +65,14 @@ public class UserController {
 
             return "redirect:register";
         }
+
+        boolean isUserNameExist = userService.isUserExist(userRegisterBindingModel.getUsername());
+
+        if(isUserNameExist){
+            //TODO redirect
+            System.out.println("EXIST");
+        }
+
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         return "redirect:login";
     }
