@@ -18,9 +18,22 @@ public class RouteEntity extends BaseEntity {
 
     private Set<CategoryEntity> categories;
 
+    private Set<PictureEntity> pictures;
+
     public RouteEntity() {
     }
-@ManyToMany
+
+    @OneToMany(mappedBy = "route")
+    public Set<PictureEntity> getPictures() {
+        return pictures;
+    }
+
+    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+        this.pictures = pictures;
+        return this;
+    }
+
+    @ManyToMany
     public Set<CategoryEntity> getCategories() {
         return categories;
     }
@@ -59,7 +72,8 @@ public class RouteEntity extends BaseEntity {
         this.level = levelEnum;
         return this;
     }
-@Column(nullable = false, unique = true)
+
+    @Column(nullable = false, unique = true)
     public String getName() {
         return name;
     }
@@ -77,7 +91,8 @@ public class RouteEntity extends BaseEntity {
         this.videoUrl = videoUrl;
         return this;
     }
-@ManyToOne
+
+    @ManyToOne
     public UserEntity getAuthor() {
         return author;
     }

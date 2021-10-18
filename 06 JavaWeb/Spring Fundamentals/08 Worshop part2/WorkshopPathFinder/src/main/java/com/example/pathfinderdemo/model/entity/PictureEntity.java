@@ -6,8 +6,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="pictures")
-public class PictureEntity extends BaseEntity{
+@Table(name = "pictures")
+public class PictureEntity extends BaseEntity {
     private String title;
     private String url;
     private UserEntity author;
@@ -25,7 +25,8 @@ public class PictureEntity extends BaseEntity{
         this.title = title;
         return this;
     }
-@Column(columnDefinition = "TEXT")
+
+    @Column(columnDefinition = "TEXT")
     public String getUrl() {
         return url;
     }
@@ -34,7 +35,8 @@ public class PictureEntity extends BaseEntity{
         this.url = url;
         return this;
     }
-@ManyToOne
+
+    @ManyToOne
     public UserEntity getAuthor() {
         return author;
     }
@@ -43,7 +45,8 @@ public class PictureEntity extends BaseEntity{
         this.author = author;
         return this;
     }
-@ManyToOne
+
+    @ManyToOne
     public RouteEntity getRoute() {
         return route;
     }
