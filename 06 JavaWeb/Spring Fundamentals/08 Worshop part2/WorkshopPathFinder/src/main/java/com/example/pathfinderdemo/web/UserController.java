@@ -69,8 +69,8 @@ public class UserController {
         boolean isUserNameExist = userService.isUserExist(userRegisterBindingModel.getUsername());
 
         if(isUserNameExist){
-            //TODO redirect
-            System.out.println("EXIST");
+            //TODO redirect with message
+           // System.out.println("EXIST");
         }
 
         userService.registerUser(modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
