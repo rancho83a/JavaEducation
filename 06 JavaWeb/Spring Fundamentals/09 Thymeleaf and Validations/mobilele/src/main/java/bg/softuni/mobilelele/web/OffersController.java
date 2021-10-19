@@ -16,6 +16,7 @@ public class OffersController {
         this.offerService = offerService;
     }
 
+    //GET
     @GetMapping("/offers/all")
     public String allOffers(Model model) {
         model.addAttribute("offers",
@@ -23,18 +24,29 @@ public class OffersController {
         return "offers";
     }
 
+    //DETAILS
     @GetMapping("/offers/{id}/details")
     public String showOffer(@PathVariable Long id, Model model) {
         model.addAttribute("offer", this.offerService.findById(id));
         return "details";
     }
 
+    //DELETE
     @DeleteMapping("/offers/{id}")
-    public String deleteOffer(@PathVariable Long id){
+    public String deleteOffer(@PathVariable Long id) {
         this.offerService.deleteOffer(id);
 
         return "redirect:/offers/all";
     }
+
+    //UPDATE
+    @GetMapping("/offers/{id}/edit")
+    public String editOffer(@PathVariable Long id, Model model) {
+        return "update";
+    }
+
+    @Partch
+
 
 }
 
