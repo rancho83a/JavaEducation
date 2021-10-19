@@ -11,4 +11,5 @@ public interface OfferService {
     List<OffersSummaryView> getAllOffers();
 
     OfferDetailsView findById(Long id);
+    void deleteOffer(Long id);
 }
