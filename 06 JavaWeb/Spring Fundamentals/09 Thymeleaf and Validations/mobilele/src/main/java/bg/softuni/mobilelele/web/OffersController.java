@@ -2,6 +2,8 @@ package bg.softuni.mobilelele.web;
 
 
 import bg.softuni.mobilelele.model.binding.OfferUpdateBindingModel;
+import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
+import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
 import bg.softuni.mobilelele.model.service.OfferUpdateServiceModel;
 import bg.softuni.mobilelele.model.view.OfferDetailsView;
 import bg.softuni.mobilelele.service.OfferService;
@@ -50,17 +52,22 @@ public class OffersController {
     @GetMapping("/offers/{id}/edit")
     public String editOffer(@PathVariable Long id, Model model) {
 
+        //для визуализации данних в полях для редактирования оферти
         OfferDetailsView offerDetailsView = offerService.findById(id);
-
         OfferUpdateBindingModel offerModel = modelMapper.map(offerDetailsView, OfferUpdateBindingModel.class);
-
+//добавляем падающее меню
+        model.addAttribute("engines", EngineEnum.values());
+        model.addAttribute("transmissions", TransmissionEnum.values());
         model.addAttribute("offerModel", offerModel);
         return "update";
     }
 
     @PatchMapping("/offers/{id}/edit")
-    public String editOffer(OfferUpdateBindingModel offerUpdateBindingModel) {
+    public String editOffer(@PathVariable Long id,
+            OfferUpdateBindingModel offerUpdateBindingModel) {
+        //todo validation
         OfferUpdateServiceModel offerModel = modelMapper.map(offerUpdateBindingModel, OfferUpdateServiceModel.class);
+        offerModel.setId(id);
 
         offerService.updateOffer(offerModel);
 
