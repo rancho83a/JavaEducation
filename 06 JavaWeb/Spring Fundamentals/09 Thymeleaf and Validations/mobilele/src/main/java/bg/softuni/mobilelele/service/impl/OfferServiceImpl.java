@@ -96,9 +96,18 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void updateOffer(OfferUpdateServiceModel offerModel) {
-       offerRepository.findById(offerModel.getId()).orElseThrow(()->
-               new ObjectNotFoundException("Object with" + offerModel.getId() + " not found!"));
+        OfferEntity offerEntity = offerRepository.findById(offerModel.getId()).orElseThrow(() ->
+                new ObjectNotFoundException("Object with" + offerModel.getId() + " not found!"));
 
+        offerEntity.setPrice(offerModel.getPrice())
+                .setDescription(offerModel.getDescription())
+                .setEngine(offerModel.getEngine())
+                .setImageUrl(offerModel.getImageUrl())
+                .setMileage(offerModel.getMileage())
+                .setYear(offerModel.getYear())
+                .setTransmission(offerModel.getTransmission());
+
+        offerRepository.save(offerEntity);
 
     }
 

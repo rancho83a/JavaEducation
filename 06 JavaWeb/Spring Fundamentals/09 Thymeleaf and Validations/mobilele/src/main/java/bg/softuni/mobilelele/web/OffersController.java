@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.validation.Valid;
+
 @Controller
 public class OffersController {
     private final OfferService offerService;
@@ -64,16 +66,13 @@ public class OffersController {
 
     @PatchMapping("/offers/{id}/edit")
     public String editOffer(@PathVariable Long id,
-            OfferUpdateBindingModel offerUpdateBindingModel) {
+            @Valid OfferUpdateBindingModel offerUpdateBindingModel) {
         //todo validation
         OfferUpdateServiceModel offerModel = modelMapper.map(offerUpdateBindingModel, OfferUpdateServiceModel.class);
         offerModel.setId(id);
 
         offerService.updateOffer(offerModel);
-
-
-        //TODO validation
-        return "";
+        return "redirect:/offers/" + id + "/details";
     }
 
 

@@ -3,6 +3,8 @@ package bg.softuni.mobilelele.model.service;
 import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
 
+import java.math.BigDecimal;
+
 public class OfferUpdateServiceModel {
 
     private Long id;
@@ -12,12 +14,12 @@ public class OfferUpdateServiceModel {
     private EngineEnum engine;
     private String imageUrl;
 
-    private int mileage;
-    private int price;
+    private Integer mileage;
+    private BigDecimal price;
 
     private TransmissionEnum transmission;
 
-    private int year;
+    private Integer year;
 
     public OfferUpdateServiceModel() {
     }
@@ -58,20 +60,20 @@ public class OfferUpdateServiceModel {
         return this;
     }
 
-    public int getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public OfferUpdateServiceModel setMileage(int mileage) {
+    public OfferUpdateServiceModel setMileage(Integer mileage) {
         this.mileage = mileage;
         return this;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public OfferUpdateServiceModel setPrice(int price) {
+    public OfferUpdateServiceModel setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -85,11 +87,11 @@ public class OfferUpdateServiceModel {
         return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public OfferUpdateServiceModel setYear(int year) {
+    public OfferUpdateServiceModel setYear(Integer year) {
         this.year = year;
         return this;
     }

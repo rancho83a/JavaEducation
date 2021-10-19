@@ -3,22 +3,37 @@ package bg.softuni.mobilelele.model.binding;
 import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 public class OfferUpdateBindingModel {
     private Long id;
 
+    @NotBlank
     private String description;
 
+    @NotNull
     private EngineEnum engine;
+    @NotBlank
     private String imageUrl;
 
-    private int mileage;
-    private int price;
+    @NotNull
+    @Min(0)
+    private Integer mileage;
 
+    @NotNull
+    @Min(100)
+    private BigDecimal price;
+
+    @NotNull
     private TransmissionEnum transmission;
 
-    private int year;
+    @NotNull
+    @Min(1930)
+    private Integer year;
 
     public OfferUpdateBindingModel() {
     }
@@ -59,20 +74,20 @@ public class OfferUpdateBindingModel {
         return this;
     }
 
-    public int getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public OfferUpdateBindingModel setMileage(int mileage) {
+    public OfferUpdateBindingModel setMileage(Integer mileage) {
         this.mileage = mileage;
         return this;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public OfferUpdateBindingModel setPrice(int price) {
+    public OfferUpdateBindingModel setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -86,11 +101,11 @@ public class OfferUpdateBindingModel {
         return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public OfferUpdateBindingModel setYear(int year) {
+    public OfferUpdateBindingModel setYear(Integer year) {
         this.year = year;
         return this;
     }
