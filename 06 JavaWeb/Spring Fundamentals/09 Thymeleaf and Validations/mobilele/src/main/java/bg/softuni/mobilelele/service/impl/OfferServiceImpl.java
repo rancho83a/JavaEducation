@@ -3,6 +3,7 @@ package bg.softuni.mobilelele.service.impl;
 import bg.softuni.mobilelele.model.entity.OfferEntity;
 import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
+import bg.softuni.mobilelele.model.view.OfferDetailsView;
 import bg.softuni.mobilelele.model.view.OffersSummaryView;
 import bg.softuni.mobilelele.repository.ModelRepository;
 import bg.softuni.mobilelele.repository.OfferRepository;
@@ -41,7 +42,7 @@ public class OfferServiceImpl implements OfferService {
                     .setPrice(BigDecimal.valueOf(14300))
                     .setYear(2019)
                     .setDescription("Used, but well services and in good condition.")
-                    .setSeller(userRepository.findByUsername("pesho")
+                    .setSeller(userRepository.findByUsername("user")
                             .orElse(null)) // or currentUser.getUserName()
                     .setImageUrl(
                             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcXp1KBpDKgYs6VqndkBpX8twjPOZbHV86yg&usqp=CAU");
@@ -70,17 +71,34 @@ public class OfferServiceImpl implements OfferService {
         List<OfferEntity> all = offerRepository.findAll();
 
         List<OffersSummaryView> collect = offerRepository.findAll().stream()
-                .map(this::map)
+                .map(this::mapToSummaryView)
                 .collect(Collectors.toList());
 
 
         return collect;
     }
 
-    private OffersSummaryView map(OfferEntity offerEntity){
+    @Override
+    public OfferDetailsView findById(Long id) {
+        OfferEntity offerEntity = offerRepository.findById(id).get();
+        OfferDetailsView offerDetails = mapToDetailView(offerEntity);
+
+        return offerDetails;
+    }
+
+    private OfferDetailsView mapToDetailView(OfferEntity offerEntity) {
+        OfferDetailsView offerDetails = modelMapper.map(offerEntity, OfferDetailsView.class);
+        offerDetails.setModel(offerEntity.getModel().getName());
+        offerDetails.setBrand(offerEntity.getModel().getBrand().getName());
+        offerDetails.setSellerFullName(offerEntity.getSeller().getFirstName() + " " + offerEntity.getSeller().getLastName());
+
+        return offerDetails;
+    }
+
+    private OffersSummaryView mapToSummaryView(OfferEntity offerEntity) {
         OffersSummaryView summaryView = modelMapper.map(offerEntity, OffersSummaryView.class);
-        summaryView.setBrand(offerEntity.getModel().getBrand().getName());
         summaryView.setModel(offerEntity.getModel().getName());
+        summaryView.setBrand(offerEntity.getModel().getBrand().getName());
 
         return summaryView;
     }

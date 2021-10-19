@@ -15,6 +15,7 @@ spring:
     #database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: create-drop
+      //ddl-auto: update
     open-in-view: false
     properties:
       hibernate:

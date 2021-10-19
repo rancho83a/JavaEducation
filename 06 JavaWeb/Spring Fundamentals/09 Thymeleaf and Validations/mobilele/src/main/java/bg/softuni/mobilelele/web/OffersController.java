@@ -23,7 +23,8 @@ public class OffersController {
     }
 
     @GetMapping("/offers/{id}/details")
-    public String showOffer(@PathVariable Long id) {
+    public String showOffer(@PathVariable Long id, Model model) {
+        model.addAttribute("offer", this.offerService.findById(id));
         return "details";
     }
 
