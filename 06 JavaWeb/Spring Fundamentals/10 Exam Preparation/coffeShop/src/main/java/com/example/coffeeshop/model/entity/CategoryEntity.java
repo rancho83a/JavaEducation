@@ -1,5 +1,7 @@
 package com.example.coffeeshop.model.entity;
 
+import org.apache.catalina.User;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class CategoryEntity extends BaseEntity {
 
     public CategoryEntity() {
     }
+
 
     @Enumerated(EnumType.STRING)
     public CategoryNameEnum getName() {
