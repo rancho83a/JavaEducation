@@ -3,9 +3,7 @@ package bg.softuni.mobilelele.model.binding;
 import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 
@@ -21,7 +19,7 @@ public class OfferUpdateBindingModel {
     private String imageUrl;
 
     @NotNull
-    @Min(0)
+    @PositiveOrZero
     private Integer mileage;
 
     @NotNull

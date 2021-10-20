@@ -10,10 +10,12 @@ import bg.softuni.mobilelele.service.OfferService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -64,14 +66,33 @@ public class OffersController {
         return "update";
     }
 
+    @GetMapping("/offers/{id}/edit/errors")
+    public String editOfferErrors(@PathVariable Long id, Model model) {
+
+        model.addAttribute("engines", EngineEnum.values());
+        model.addAttribute("transmissions", TransmissionEnum.values());
+        return "update";
+    }
+
     @PatchMapping("/offers/{id}/edit")
     public String editOffer(@PathVariable Long id,
-            @Valid OfferUpdateBindingModel offerUpdateBindingModel) {
-        //todo validation
-        OfferUpdateServiceModel offerModel = modelMapper.map(offerUpdateBindingModel, OfferUpdateServiceModel.class);
+                            @Valid OfferUpdateBindingModel offerModel,
+                            BindingResult bindingResult,
+                            RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+
+            //flashAttribute -> ocelyavat pri POST-redirect->GET
+             redirectAttributes.addFlashAttribute("offerModel", offerModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.offerModel", bindingResult);
+
+            return "redirect:/offers/"+ id+ "/edit/errors";
+        }
+
+        OfferUpdateServiceModel serviceModel = modelMapper.map(offerModel, OfferUpdateServiceModel.class);
         offerModel.setId(id);
 
-        offerService.updateOffer(offerModel);
+        offerService.updateOffer(serviceModel);
         return "redirect:/offers/" + id + "/details";
     }
 

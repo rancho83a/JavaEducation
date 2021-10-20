@@ -63,15 +63,19 @@ public class UserRegistrationController {
         UserRegistrationServiceModel userRegistrationServiceModel = modelMapper
                 .map(userModel, UserRegistrationServiceModel.class);
 
+//   Implements with Custom Validator -> UniqueUserName
 
-        if (!userService.isUserNameFree(userRegistrationServiceModel.getUsername())) {
-            redirectAttributes.addFlashAttribute("userModel", userModel);
-            redirectAttributes.addFlashAttribute("userNameOccupied", true);
+//        if (!userService.isUserNameFree(userRegistrationServiceModel.getUsername())) {
+//            redirectAttributes.addFlashAttribute("userModel", userModel);
+//            redirectAttributes.addFlashAttribute("userNameOccupied", true);
+//
+//            return "redirect:/users/register";
+//        } else {
+//            userService.registerAndLoginUser(userRegistrationServiceModel);
+//        }
 
-            return "redirect:/users/register";
-        } else {
-            userService.registerAndLoginUser(userRegistrationServiceModel);
-        }
+        userService.registerAndLoginUser(userRegistrationServiceModel);
+
         return "redirect:/";
     }
 }
