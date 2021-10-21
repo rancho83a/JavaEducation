@@ -1,20 +1,30 @@
 package com.example.coffeeshop.model.service;
 
-public class UserRegisterServiceModel {
+public class UserServiceModel {
+    private Long id;
     private String email;
     private String firstName;
     private String lastName;
     private String password;
     private String username;
 
-    public UserRegisterServiceModel() {
+    public UserServiceModel() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public UserServiceModel setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public UserRegisterServiceModel setEmail(String email) {
+    public UserServiceModel setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -23,7 +33,7 @@ public class UserRegisterServiceModel {
         return firstName;
     }
 
-    public UserRegisterServiceModel setFirstName(String firstName) {
+    public UserServiceModel setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -32,7 +42,7 @@ public class UserRegisterServiceModel {
         return lastName;
     }
 
-    public UserRegisterServiceModel setLastName(String lastName) {
+    public UserServiceModel setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -41,7 +51,7 @@ public class UserRegisterServiceModel {
         return password;
     }
 
-    public UserRegisterServiceModel setPassword(String password) {
+    public UserServiceModel setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -50,7 +60,7 @@ public class UserRegisterServiceModel {
         return username;
     }
 
-    public UserRegisterServiceModel setUsername(String username) {
+    public UserServiceModel setUsername(String username) {
         this.username = username;
         return this;
     }

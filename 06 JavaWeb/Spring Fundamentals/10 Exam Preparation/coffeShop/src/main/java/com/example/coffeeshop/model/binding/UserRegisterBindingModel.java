@@ -17,8 +17,8 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    // @Email
-    @Pattern(regexp = "^(\\w+@\\w+)(.\\w+){2,}$")
+     @Email
+    //@Pattern(regexp = "^(\\w+@\\w+)(.\\w+){2,}$")
     public String getEmail() {
         return email;
     }
