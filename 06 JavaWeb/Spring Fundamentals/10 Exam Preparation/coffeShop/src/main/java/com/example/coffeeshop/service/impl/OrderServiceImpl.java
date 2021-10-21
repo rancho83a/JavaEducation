@@ -48,4 +48,9 @@ public class OrderServiceImpl implements OrderService {
                 .stream().map(order-> modelMapper.map(order,OrderViewModel.class))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void orderReady(Long id) {
+        this.orderRepository.deleteById(id);
+    }
 }

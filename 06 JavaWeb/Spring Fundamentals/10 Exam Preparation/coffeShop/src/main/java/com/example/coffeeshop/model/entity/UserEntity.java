@@ -1,8 +1,7 @@
 package com.example.coffeeshop.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -12,11 +11,23 @@ public class UserEntity extends BaseEntity {
     private String lastName;
     private String password;
     private String username;
+    private Set<OrderEntity> orders;
+
 
     public UserEntity() {
     }
 
-    @Column(nullable = false,unique = true)
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    public Set<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public UserEntity setOrders(Set<OrderEntity> orders) {
+        this.orders = orders;
+        return this;
+    }
+
+    @Column(nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
@@ -44,6 +55,7 @@ public class UserEntity extends BaseEntity {
         this.lastName = lastName;
         return this;
     }
+
     @Column(nullable = false)
     public String getPassword() {
         return password;
