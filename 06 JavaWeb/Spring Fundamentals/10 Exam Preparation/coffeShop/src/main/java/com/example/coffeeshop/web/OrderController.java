@@ -1,7 +1,9 @@
 package com.example.coffeeshop.web;
 
 import com.example.coffeeshop.model.binding.OrderAddBindingModel;
-import com.example.coffeeshop.model.binding.UserRegisterBindingModel;
+import com.example.coffeeshop.model.service.OrderServiceModel;
+import com.example.coffeeshop.service.OrderService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,26 +18,32 @@ import javax.validation.Valid;
 @RequestMapping("/orders")
 public class OrderController {
 
+    private final OrderService orderService;
+    private final ModelMapper modelMapper;
+
+    public OrderController(OrderService orderService, ModelMapper modelMapper) {
+        this.orderService = orderService;
+        this.modelMapper = modelMapper;
+    }
+
     @GetMapping("/add")
     public String add() {
         return "order-add";
     }
 
-@PostMapping("/add")
+    @PostMapping("/add")
     public String addOrder(@Valid OrderAddBindingModel orderAddBindingModel,
-                           BindingResult bindingResult, RedirectAttributes redirectAttributes){
+                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("orderAddBindingModel", orderAddBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.orderAddBindingModel", bindingResult);
             return "redirect:add";
         }
 
-
-        //todo save to DB
-
+        orderService.addOrder(modelMapper.map(orderAddBindingModel, OrderServiceModel.class));
         return "redirect:/home";
-}
+    }
 
     @ModelAttribute
     public OrderAddBindingModel orderAddBindingModel() {

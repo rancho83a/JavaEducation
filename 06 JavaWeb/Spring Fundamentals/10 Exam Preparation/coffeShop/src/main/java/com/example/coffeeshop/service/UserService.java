@@ -1,6 +1,7 @@
 package com.example.coffeeshop.service;
 
 
+import com.example.coffeeshop.model.entity.UserEntity;
 import com.example.coffeeshop.model.service.UserServiceModel;
 
 public interface UserService {
@@ -11,4 +12,6 @@ public interface UserService {
     void loginUser(Long id, String username);
 
     void logout();
+
+    UserEntity findById(Long id);
 }
