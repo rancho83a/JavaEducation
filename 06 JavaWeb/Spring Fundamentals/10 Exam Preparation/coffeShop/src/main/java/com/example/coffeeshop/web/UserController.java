@@ -6,6 +6,7 @@ import com.example.coffeeshop.model.service.UserServiceModel;
 import com.example.coffeeshop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,7 +53,10 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        if(!model.containsAttribute("isFound")){
+            model.addAttribute("isFound", true);
+        }
         return "login";
     }
 
@@ -64,6 +68,7 @@ public class UserController {
 
             redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+          //redirect to METHOD in current Controller
             return "redirect:login";
         }
 
@@ -79,13 +84,24 @@ public class UserController {
         }
 
         userService.loginUser(userServiceModel.getId(), userServiceModel.getUsername());
-        return "redirect:/";
+        return "redirect:/home";
 
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        userService.logout();
+        return "redirect:/";
     }
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel() {
         return new UserRegisterBindingModel();
+        //v template register add: th:action, th:method
+    }
+    @ModelAttribute
+    public UserLoginBindingModel userLoginBindingModel() {
+        return new UserLoginBindingModel();
         //v template register add: th:action, th:method
     }
 }

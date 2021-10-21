@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
         currentUser.setUsername(username).setId(id);
 
     }
+
+    @Override
+    public void logout() {
+        currentUser.setUsername(null).setId(null);
+    }
 }
