@@ -1,6 +1,7 @@
 package com.example.coffeeshop.model.binding;
 
 import com.example.coffeeshop.model.entity.CategoryEntity;
+import com.example.coffeeshop.model.entity.CategoryNameEnum;
 import com.example.coffeeshop.model.entity.UserEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -15,7 +16,7 @@ public class OrderAddBindingModel {
     private String name;
     private BigDecimal price;
     private LocalDateTime orderTime;
-    private CategoryEntity category;
+    private CategoryNameEnum category;
     private String description;
 
     public OrderAddBindingModel() {
@@ -56,11 +57,11 @@ public class OrderAddBindingModel {
     }
 
     @NotNull
-    public CategoryEntity getCategory() {
+    public CategoryNameEnum getCategory() {
         return category;
     }
 
-    public OrderAddBindingModel setCategory(CategoryEntity category) {
+    public OrderAddBindingModel setCategory(CategoryNameEnum category) {
         this.category = category;
         return this;
     }
