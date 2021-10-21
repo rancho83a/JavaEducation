@@ -42,7 +42,7 @@ public class OrderController {
         }
 
         orderService.addOrder(modelMapper.map(orderAddBindingModel, OrderServiceModel.class));
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @ModelAttribute

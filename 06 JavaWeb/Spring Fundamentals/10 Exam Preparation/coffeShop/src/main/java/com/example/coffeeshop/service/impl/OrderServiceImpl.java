@@ -2,6 +2,7 @@ package com.example.coffeeshop.service.impl;
 
 import com.example.coffeeshop.model.entity.OrderEntity;
 import com.example.coffeeshop.model.service.OrderServiceModel;
+import com.example.coffeeshop.model.view.OrderViewModel;
 import com.example.coffeeshop.repository.OrderRepository;
 import com.example.coffeeshop.security.CurrentUser;
 import com.example.coffeeshop.service.CategoryService;
@@ -9,6 +10,9 @@ import com.example.coffeeshop.service.OrderService;
 import com.example.coffeeshop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -35,5 +39,13 @@ public class OrderServiceImpl implements OrderService {
         order.setCategory(categoryService.findCategoryByCategoryNameEnum(orderServiceModel.getCategory()));
 
         this.orderRepository.save(order);
+    }
+
+    @Override
+    public List<OrderViewModel> findAllOrdersByPriceDesc() {
+
+        return this.orderRepository.findAllByOrderByPriceDesc()
+                .stream().map(order-> modelMapper.map(order,OrderViewModel.class))
+                .collect(Collectors.toList());
     }
 }
