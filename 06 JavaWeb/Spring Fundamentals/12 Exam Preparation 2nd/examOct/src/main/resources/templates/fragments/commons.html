@@ -14,7 +14,7 @@
 <header th:fragment="navigation">
   <nav class="navbar navbar-expand-lg bg-nav rounded">
     <a class="nav-link text-white active h5" href="/">Shopping List App</a>
-    <a th:unless="${session.user == null}"
+    <a th:if="${@currentUser.id != null}"
             class="nav-link text-white active h5" href="/product/add">Add Product</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,9 @@
     <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
       <ul class="navbar-nav row">
         <li class="nav-item col-md-4">
-          <a th:unless="${session.user == null}" class="nav-link text-white active h5" href="/users/logout">Logout</a>
+          <a th:if="${@currentUser.id != null}" class="nav-link text-white active h5" href="/users/logout">Logout</a>
         </li>
-        <th:block th:if="${session.user == null}">
+        <th:block th:if="${@currentUser.id == null}">
 
             <ul class="navbar-nav row">
               <li class="nav-item col-md-4">
