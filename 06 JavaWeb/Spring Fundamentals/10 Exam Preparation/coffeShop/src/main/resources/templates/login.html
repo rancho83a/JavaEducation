@@ -34,10 +34,12 @@
                         <input type="text" class="form-control"
                                id="username"
                                th:field="*{username}"
-                               th:errorclass="is-invalid"
+                               th:errorclass="bg-danger"
                                aria-describedby="usernameHelpInline" placeholder="Username">
-                        <small id="usernameHelpInline"
-                               class="invalid-feedback bg-danger text-light rounded">
+                        <small
+                                th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                                id="usernameHelpInline"
+                               class="bg-danger text-light rounded">
                             Username length must be between 5 and 20 characters.
                         </small>
                     </div>

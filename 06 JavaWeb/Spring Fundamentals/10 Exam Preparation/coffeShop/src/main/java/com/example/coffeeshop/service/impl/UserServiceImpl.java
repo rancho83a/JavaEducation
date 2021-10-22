@@ -68,4 +68,9 @@ public class UserServiceImpl implements UserService {
                 })
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public boolean isUserNameFree(String username) {
+        return this.userRepository.findByUsernameIgnoreCase(username).isEmpty();
+    }
 }

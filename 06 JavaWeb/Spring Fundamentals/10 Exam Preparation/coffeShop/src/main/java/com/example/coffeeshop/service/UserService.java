@@ -19,4 +19,6 @@ public interface UserService {
     UserEntity findById(Long id);
 
     List<UserViewModel> findAllUsersByCountOrdersDesc();
+
+    boolean isUserNameFree(String username);
 }

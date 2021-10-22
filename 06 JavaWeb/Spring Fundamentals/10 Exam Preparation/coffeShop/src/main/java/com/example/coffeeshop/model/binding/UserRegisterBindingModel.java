@@ -1,5 +1,7 @@
 package com.example.coffeeshop.model.binding;
 
+import com.example.coffeeshop.model.validator.UniqueUserName;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -72,6 +74,7 @@ public class UserRegisterBindingModel {
 
     @NotNull
     @Size(min = 5, max = 20)
+    @UniqueUserName(message = "Username is occupied")
     public String getUsername() {
         return username;
     }

@@ -56,7 +56,7 @@ public class OrderAddBindingModel {
         return this;
     }
 
-    @NotNull
+    @NotNull(message = "my error in category")
     public CategoryNameEnum getCategory() {
         return category;
     }
