@@ -3,8 +3,7 @@ package com.example.examOct.model.service;
 public class UserServiceModel {
     private Long id;
     private String email;
-    private String firstName;
-    private String lastName;
+
     private String password;
     private String username;
 
@@ -29,23 +28,6 @@ public class UserServiceModel {
         return this;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserServiceModel setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserServiceModel setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
 
     public String getPassword() {
         return password;

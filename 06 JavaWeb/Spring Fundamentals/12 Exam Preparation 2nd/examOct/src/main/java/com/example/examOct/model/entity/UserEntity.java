@@ -6,11 +6,9 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String password;
     private String username;
+    private String password;
+    private String email;
 
 
     public UserEntity() {
@@ -18,7 +16,7 @@ public class UserEntity extends BaseEntity {
 
 
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     public String getEmail() {
         return email;
     }
@@ -28,24 +26,6 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserEntity setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    @Column(nullable = false)
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserEntity setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
 
     @Column(nullable = false)
     public String getPassword() {

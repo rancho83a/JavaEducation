@@ -10,7 +10,7 @@ public class UserLoginBindingModel {
     public UserLoginBindingModel() {
     }
     @NotNull
-    @Size(min = 5, max = 20, message = "My USERNAME error message")
+    @Size(min = 3, max = 20, message = "Username length must be between 3 and 20 characters")
     public String getUsername() {
         return username;
     }
@@ -20,7 +20,7 @@ public class UserLoginBindingModel {
         return this;
     }
     @NotNull
-    @Size(min = 3, message = "My PASSWORD error message")
+    @Size(min = 3, max = 20, message = "Password must be between 3 and 20 characters")
     public String getPassword() {
         return password;
     }

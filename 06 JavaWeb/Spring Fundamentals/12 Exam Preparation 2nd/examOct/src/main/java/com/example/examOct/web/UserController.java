@@ -29,7 +29,11 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        if(!model.containsAttribute("isConfirm")){
+            model.addAttribute("isConfirm", true);
+        }
+
         // ako za parvi pat vlizame, to nqma podaden userRegisterBindingModel => @ModelAttribute
 
         return "register";
@@ -39,11 +43,18 @@ public class UserController {
     public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() || !userRegisterBindingModel.getPassword()
+        if (bindingResult.hasErrors() ) {
+
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+            return "redirect:register";
+        }
+        if ( !userRegisterBindingModel.getPassword()
                 .equals(userRegisterBindingModel.getConfirmPassword())) {
 
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("isConfirm", false);
             return "redirect:register";
         }
 

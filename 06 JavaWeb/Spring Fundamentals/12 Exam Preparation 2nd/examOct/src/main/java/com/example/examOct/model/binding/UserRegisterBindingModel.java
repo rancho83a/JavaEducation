@@ -3,24 +3,21 @@ package com.example.examOct.model.binding;
 
 import com.example.examOct.model.validator.UniqueUserName;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class UserRegisterBindingModel {
+    private String username;
+
     private String email;
-    private String firstName;
-    private String lastName;
+
     private String password;
     private String confirmPassword;
-    private String username;
 
     public UserRegisterBindingModel() {
     }
 
-    @NotNull
-     @Email
+    @NotBlank(message = "Email can not be empty")
+     @Email(message = "email must contains @")
     //@Pattern(regexp = "^(\\w+@\\w+)(.\\w+){2,}$")
     public String getEmail() {
         return email;
@@ -31,28 +28,9 @@ public class UserRegisterBindingModel {
         return this;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public UserRegisterBindingModel setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
 
     @NotNull
-    @Size(min = 5, max = 20)
-    public String getLastName() {
-        return lastName;
-    }
-
-    public UserRegisterBindingModel setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    @NotNull
-    @Size(min = 3)
+    @Size(min = 3, max = 20,  message = "Password must be between 3 and 20 characters")
     public String getPassword() {
         return password;
     }
@@ -63,7 +41,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Size(min = 3)
+    @Size(min = 3, max =20, message = "Please, confirm password")
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -74,7 +52,7 @@ public class UserRegisterBindingModel {
     }
 
     @NotNull
-    @Size(min = 5, max = 20)
+    @Size(min = 3, max = 20, message = "Username length must be between 3 and 20 characters")
     @UniqueUserName(message = "Username is occupied")
     public String getUsername() {
         return username;
