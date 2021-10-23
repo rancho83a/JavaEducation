@@ -17,6 +17,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+
     private final ProductService productService;
     private final ModelMapper modelMapper;
 
@@ -31,12 +32,12 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addOrder(@Valid ProductAddBindingModel productAddBindingModel,
+    public String addProduct(@Valid ProductAddBindingModel productAddBindingModel,
                            BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("productBindingModel", productAddBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("productAddBindingModel", productAddBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productAddBindingModel", bindingResult);
             return "redirect:add";
         }
 

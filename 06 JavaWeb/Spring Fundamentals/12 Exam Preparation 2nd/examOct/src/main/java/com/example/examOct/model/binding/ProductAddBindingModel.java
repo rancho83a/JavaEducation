@@ -33,7 +33,7 @@ public class ProductAddBindingModel {
     }
 
     //
-    @NotNull
+    @NotNull(message = "Description min length must be minimum 5(inclusive) characters")
     @Size(min = 5, message = "Description min length must be minimum 5(inclusive) characters")
     public String getDescription() {
         return description;
@@ -44,6 +44,7 @@ public class ProductAddBindingModel {
         return this;
     }
 
+    @NotNull(message ="Price must be a positive number" )
     @Positive(message = "Price must be a positive number")
     public BigDecimal getPrice() {
         return price;
@@ -54,7 +55,7 @@ public class ProductAddBindingModel {
         return this;
     }
 
-    @NotNull
+    @NotNull(message = "can not be empty")
     @FutureOrPresent(message = "Date and Time, that cannot be in the past")
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     public LocalDateTime getNeededBefore() {
