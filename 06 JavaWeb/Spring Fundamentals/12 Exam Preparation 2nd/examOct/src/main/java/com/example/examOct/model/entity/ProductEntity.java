@@ -22,6 +22,7 @@ public class ProductEntity extends BaseEntity {
     public ProductEntity() {
     }
 
+
     @Column(unique = true, nullable = false)
     public String getName() {
         return name;

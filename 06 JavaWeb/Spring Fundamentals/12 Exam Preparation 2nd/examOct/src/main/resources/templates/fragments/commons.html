@@ -14,8 +14,8 @@
 <header th:fragment="navigation">
   <nav class="navbar navbar-expand-lg bg-nav rounded">
     <a class="nav-link text-white active h5" href="/">Shopping List App</a>
-    <a th:if="${@currentUser.id != null}"
-            class="nav-link text-white active h5" href="/product/add">Add Product</a>
+    <a th:if="${session.user !=null}"
+            class="nav-link text-white active h5" href="/products/add">Add Product</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
