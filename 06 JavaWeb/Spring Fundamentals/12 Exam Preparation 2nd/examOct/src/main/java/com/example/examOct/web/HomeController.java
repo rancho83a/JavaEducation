@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 
@@ -35,7 +36,12 @@ public class HomeController {
             return "index";
         }
 
-        model.addAttribute("totalSum", this.productService.getTotalProductsSum());
+        BigDecimal totalSum = this.productService.getTotalProductsSum();
+        if (null == (totalSum)) {
+            totalSum = BigDecimal.ZERO;
+        }
+
+        model.addAttribute("totalSum", totalSum);
 
         model.addAttribute("drinkProducts",
                 this.productService.getProductsByCategory(CategoryNameEnum.DRINK).stream()
