@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/routes")
 public class RouteController {
 
-    @GetMapping("")
+    @GetMapping("/all")
     public String route(){
         return "routes";
     }
