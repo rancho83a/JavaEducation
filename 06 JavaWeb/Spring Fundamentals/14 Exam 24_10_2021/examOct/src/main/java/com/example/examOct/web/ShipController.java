@@ -43,9 +43,7 @@ public class ShipController {
 
     @PostMapping("/fire")
     public String fire(@RequestParam("attackerId") Long attackerId, @RequestParam("defenderId") Long defenderId) {
-
        shipService.fire(attackerId, defenderId);
-
         return "redirect:/";
     }
 
@@ -53,11 +51,6 @@ public class ShipController {
     @ModelAttribute
     public ShipAddBindingModel shipAddBindingModel () {
         return new ShipAddBindingModel();
-        //v template register add: th:action, th:method
     }
-    @ModelAttribute
-    public FireBindingModel fireBindingModel () {
-        return new FireBindingModel();
-        //v template register add: th:action, th:method
-    }
+
 }
