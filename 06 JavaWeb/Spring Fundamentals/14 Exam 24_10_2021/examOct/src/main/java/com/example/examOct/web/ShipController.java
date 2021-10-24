@@ -1,6 +1,5 @@
 package com.example.examOct.web;
 
-import com.example.examOct.model.binding.FireBindingModel;
 import com.example.examOct.model.binding.ShipAddBindingModel;
 import com.example.examOct.model.service.ShipServiceModel;
 import com.example.examOct.service.ShipService;

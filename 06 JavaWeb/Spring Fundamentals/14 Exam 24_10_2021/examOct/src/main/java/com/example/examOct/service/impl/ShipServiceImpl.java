@@ -65,22 +65,20 @@ public class ShipServiceImpl implements ShipService {
                 .stream()
                 .map(ship -> modelMapper.map(ship, AttackerViewModel.class))
                 .collect(Collectors.toList());
-            }
+    }
 
     @Override
     public void fire(Long attackerId, Long defenderId) {
         ShipEntity attacker = this.shipRepository.findById(attackerId).orElse(null);
         ShipEntity defender = this.shipRepository.findById(defenderId).orElse(null);
 
-        Long dif = defender.getHealth()-attacker.getPower();
-        if(dif<=0L){
+        Long dif = defender.getHealth() - attacker.getPower();
+        if (dif <= 0L) {
             this.shipRepository.deleteById(defenderId);
             return;
         }
         defender.setHealth(dif);
 
         this.shipRepository.save(defender);
-        System.out.println("HERE");
-
     }
 }
