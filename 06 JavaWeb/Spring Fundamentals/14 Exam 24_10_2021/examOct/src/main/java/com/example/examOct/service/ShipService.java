@@ -14,5 +14,5 @@ public interface ShipService {
 
     List<AttackerViewModel> findShipOfAnotherOwners(Long id);
 
-    void fire(Long id1);
+    void fire(Long attackerId, Long defenderId);
 }

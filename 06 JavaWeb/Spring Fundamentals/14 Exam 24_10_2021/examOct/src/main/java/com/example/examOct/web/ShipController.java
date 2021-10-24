@@ -42,12 +42,12 @@ public class ShipController {
         return "redirect:/";
     }
 
-    @GetMapping("/fire/{id}")
-    public String fire(FireBindingModel fireBindingModel, @PathVariable Long id) {
+    @PostMapping("/fire")
+    public String fire(@RequestParam("attackerId") Long attackerId, @RequestParam("defenderId") Long defenderId) {
 
-       shipService.fire(id);
+       shipService.fire(attackerId, defenderId);
 
-        return "home";
+        return "redirect:/";
     }
 
 

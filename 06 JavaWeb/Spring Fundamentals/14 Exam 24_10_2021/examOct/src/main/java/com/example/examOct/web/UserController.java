@@ -60,7 +60,6 @@ public class UserController {
 
 
     @PostMapping("/login")
-    @ResponseBody
     public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel,
                                BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {

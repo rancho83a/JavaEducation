@@ -11,9 +11,7 @@
         <h1 class="text-center p-5 text-white font-weight-bold">Battle</h1>
         <form
                 th:action="@{/ships/fire}"
-                th:method="get"
-                th:object="${fireBindingModel}"
-
+                th:method="post"
 
                 class="row mb-2">
             <div class="col-md-6">
@@ -25,10 +23,9 @@
                         </h3>
                         <div class="mb-1 text-white">You must select one of the logged-in users that owns a ship</div>
                         <select
-                                th:field="*{attackerId}"
+                                name="attackerId"
                                 class="form-select mt-5" aria-label="Default select example">
-                            <option selected>You must select one of the logged-in users that owns a ship</option>
-                            <option th:each="a: ${attackers}" th:value="${a.id}" th:text="${a.name}">One</option>
+                            <option  selected th:each="a: ${attackers}" th:value="${a.id}" th:text="${a.name}">One</option>
                         </select>
                     </div>
                     <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb"
@@ -47,10 +44,11 @@
                         <div class="mb-1 text-white">You must select one of the ships that is owned by another user
                         </div>
                         <select
+                                name="defenderId"
 
                                 class="form-select mt-5" aria-label="Default select example">
-                            <option selected>You must select one of the ships that is owned by another user</option>
-                            <option th:each="d: ${defenders}" th:value="${d.id}" th:text="${d.name}">One</option>
+
+                            <option selected  th:each="d: ${defenders}" th:value="${d.id}" th:text="${d.name}">One</option>
 
                         </select>
                     </div>
@@ -62,7 +60,7 @@
                 </div>
             </div>
             <button type="submit" class="col-md-6 mx-auto btn btn-danger btn-lg btn-block mt-5 mb-5"
-                    th:href="@{/ships/fire/{id}(id= *{attackerId})}">FIRE !!!
+                    th:href="@{/ships/fire}">FIRE !!!
             </button>
         </form>
         <div>

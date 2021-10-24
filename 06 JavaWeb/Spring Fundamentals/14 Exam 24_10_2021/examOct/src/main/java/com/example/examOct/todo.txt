@@ -1,5 +1,0 @@
-1. change DB name;
-2.start to check is work?(connect to DB if not yet)
-3. check is users table done
-4. add static and templates
-5. check the names of files and change in controllers if need

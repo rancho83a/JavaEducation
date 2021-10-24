@@ -1,18 +1,18 @@
 package com.example.examOct.model.binding;
 
 public class FireBindingModel {
-    private Long attackerId;
+    private String attackerName;
     private String defenderName;
 
     public FireBindingModel() {
     }
 
-    public Long getAttackerId() {
-        return attackerId;
+    public String getAttackerName() {
+        return attackerName;
     }
 
-    public FireBindingModel setAttackerId(Long attackerId) {
-        this.attackerId = attackerId;
+    public FireBindingModel setAttackerName(String attackerName) {
+        this.attackerName = attackerName;
         return this;
     }
 

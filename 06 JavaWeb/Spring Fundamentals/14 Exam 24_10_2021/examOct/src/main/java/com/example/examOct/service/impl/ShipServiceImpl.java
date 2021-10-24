@@ -68,9 +68,19 @@ public class ShipServiceImpl implements ShipService {
             }
 
     @Override
-    public void fire(Long id1) {
-        ShipEntity attacker = this.shipRepository.findById(id1).orElse(null);
-        System.out.println();
+    public void fire(Long attackerId, Long defenderId) {
+        ShipEntity attacker = this.shipRepository.findById(attackerId).orElse(null);
+        ShipEntity defender = this.shipRepository.findById(defenderId).orElse(null);
+
+        Long dif = defender.getHealth()-attacker.getPower();
+        if(dif<=0L){
+            this.shipRepository.deleteById(defenderId);
+            return;
+        }
+        defender.setHealth(dif);
+
+        this.shipRepository.save(defender);
+        System.out.println("HERE");
 
     }
 }

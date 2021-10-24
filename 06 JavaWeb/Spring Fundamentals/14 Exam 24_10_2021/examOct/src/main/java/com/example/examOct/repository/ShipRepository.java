@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ShipRepository extends JpaRepository<ShipEntity, Long> {
@@ -12,4 +13,7 @@ public interface ShipRepository extends JpaRepository<ShipEntity, Long> {
 
     List<ShipEntity> findByUserId(Long user_id);
     List<ShipEntity> findByUserIdNot(Long user_id);
+
+
+    Optional<ShipEntity> findById(Long id);
 }
