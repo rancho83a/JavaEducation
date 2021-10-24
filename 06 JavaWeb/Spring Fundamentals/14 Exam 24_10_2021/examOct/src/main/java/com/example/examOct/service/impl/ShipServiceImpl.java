@@ -45,7 +45,7 @@ public class ShipServiceImpl implements ShipService {
     @Override
     public List<ShipViewModel> findAllShips() {
 
-        return this.shipRepository.findAll()
+        return this.shipRepository.findAllByOrderById()
                 .stream()
                 .map(ship -> modelMapper.map(ship, ShipViewModel.class))
                 .collect(Collectors.toList());

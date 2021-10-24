@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface ShipRepository extends JpaRepository<ShipEntity, Long> {
-    List<ShipEntity> findAll();
+    List<ShipEntity> findAllByOrderById();
 
     List<ShipEntity> findByUserId(Long user_id);
     List<ShipEntity> findByUserIdNot(Long user_id);
