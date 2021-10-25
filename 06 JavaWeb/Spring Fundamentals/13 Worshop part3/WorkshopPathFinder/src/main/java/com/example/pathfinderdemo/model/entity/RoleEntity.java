@@ -1,9 +1,8 @@
 package com.example.pathfinderdemo.model.entity;
 
-import com.example.pathfinderdemo.model.entity.Enum.RoleEnum;
+import com.example.pathfinderdemo.model.entity.enums.RoleEnum;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name="roles")

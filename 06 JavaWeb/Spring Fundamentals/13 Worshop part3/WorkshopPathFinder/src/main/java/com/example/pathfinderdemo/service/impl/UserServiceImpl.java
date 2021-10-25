@@ -1,7 +1,7 @@
 package com.example.pathfinderdemo.service.impl;
 
 import com.example.pathfinderdemo.Repository.UserRepository;
-import com.example.pathfinderdemo.model.entity.Enum.LevelEnum;
+import com.example.pathfinderdemo.model.entity.enums.LevelEnum;
 import com.example.pathfinderdemo.model.entity.UserEntity;
 import com.example.pathfinderdemo.model.service.UserServiceModel;
 import com.example.pathfinderdemo.service.UserService;

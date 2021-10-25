@@ -1,7 +1,7 @@
 package com.example.pathfinderdemo.model.service;
 
 
-import com.example.pathfinderdemo.model.entity.Enum.LevelEnum;
+import com.example.pathfinderdemo.model.entity.enums.LevelEnum;
 import com.example.pathfinderdemo.model.entity.RoleEntity;
 
 import java.util.Set;

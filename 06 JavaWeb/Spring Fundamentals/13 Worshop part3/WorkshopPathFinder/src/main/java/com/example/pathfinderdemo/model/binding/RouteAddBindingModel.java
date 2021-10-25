@@ -1,12 +1,15 @@
 package com.example.pathfinderdemo.model.binding;
 
-import com.example.pathfinderdemo.model.entity.Enum.CategoryEnum;
-import com.example.pathfinderdemo.model.entity.Enum.LevelEnum;
+import com.example.pathfinderdemo.model.entity.enums.CategoryEnum;
+import com.example.pathfinderdemo.model.entity.enums.LevelEnum;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
-public class RoutAddBindingModel {
+public class RouteAddBindingModel {
 
     private String name;
     private String description;
@@ -15,23 +18,26 @@ public class RoutAddBindingModel {
     private String videoUrl;
     private Set<CategoryEnum> categories;
 
-    public RoutAddBindingModel() {
+    public RouteAddBindingModel() {
     }
 
+    @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters.")
     public String getName() {
         return name;
     }
 
-    public RoutAddBindingModel setName(String name) {
+    public RouteAddBindingModel setName(String name) {
         this.name = name;
         return this;
     }
 
+    @NotBlank
+    @Size(min = 3)
     public String getDescription() {
         return description;
     }
 
-    public RoutAddBindingModel setDescription(String description) {
+    public RouteAddBindingModel setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -40,16 +46,17 @@ public class RoutAddBindingModel {
         return gpxCoordinates;
     }
 
-    public RoutAddBindingModel setGpxCoordinates(MultipartFile gpxCoordinates) {
+    public RouteAddBindingModel setGpxCoordinates(MultipartFile gpxCoordinates) {
         this.gpxCoordinates = gpxCoordinates;
         return this;
     }
 
+    @NotNull
     public LevelEnum getLevel() {
         return level;
     }
 
-    public RoutAddBindingModel setLevel(LevelEnum level) {
+    public RouteAddBindingModel setLevel(LevelEnum level) {
         this.level = level;
         return this;
     }
@@ -58,8 +65,18 @@ public class RoutAddBindingModel {
         return categories;
     }
 
-    public RoutAddBindingModel setCategories(Set<CategoryEnum> categories) {
+    public RouteAddBindingModel setCategories(Set<CategoryEnum> categories) {
         this.categories = categories;
         return this;
     }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public RouteAddBindingModel setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+        return this;
+    }
+
 }

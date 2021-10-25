@@ -1,6 +1,6 @@
 package com.example.pathfinderdemo.model.view;
 
-import com.example.pathfinderdemo.model.entity.Enum.LevelEnum;
+import com.example.pathfinderdemo.model.entity.enums.LevelEnum;
 
 public class UserViewModel {
     private Long id;

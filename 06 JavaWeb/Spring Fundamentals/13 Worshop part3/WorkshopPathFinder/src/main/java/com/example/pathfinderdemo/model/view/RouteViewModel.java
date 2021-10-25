@@ -1,8 +1,5 @@
 package com.example.pathfinderdemo.model.view;
 
-import com.example.pathfinderdemo.model.entity.Enum.LevelEnum;
-import com.example.pathfinderdemo.model.entity.UserEntity;
-
 public class RouteViewModel {
     private Long id;
     private String description;
