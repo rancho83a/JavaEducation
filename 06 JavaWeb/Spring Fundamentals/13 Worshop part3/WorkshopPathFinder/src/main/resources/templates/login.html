@@ -13,7 +13,9 @@
                     th:action="@{/users/login}"
                     th:method="post">
                 <div>
-                    <h5 th:unless="${isExistUser}" class="bg-danger">Incorrect username or password</h5>
+                    <h5
+                            th:if="${isExistUser==false}"
+                            class="bg-danger">Incorrect username or password</h5>
                     <div class="col-auto">
                         <label for="inputUsername" class="col-form-label ">Username</label>
                     </div>

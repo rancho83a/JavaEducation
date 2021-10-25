@@ -79,7 +79,9 @@ public class UserController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("isExistUser", true);
+        if(!model.containsAttribute("isExistUser")){
+            model.addAttribute("isExistUser", true);
+        }
         return "login";
     }
 
