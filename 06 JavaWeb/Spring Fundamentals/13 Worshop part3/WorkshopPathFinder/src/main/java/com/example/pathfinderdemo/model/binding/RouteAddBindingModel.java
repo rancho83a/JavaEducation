@@ -21,6 +21,7 @@ public class RouteAddBindingModel {
     public RouteAddBindingModel() {
     }
 
+    // @UniqueRouteName
     @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters.")
     public String getName() {
         return name;
