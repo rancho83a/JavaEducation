@@ -1,3 +1,4 @@
+
 package com.example.copytradingforex.web;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(){
-        return "history";
+        return "index";
     }
 }

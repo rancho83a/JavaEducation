@@ -1,3 +1,11 @@
+.row > div:nth-child(1){
+    background-color: chartreuse;
+}
+.row > div:nth-child(2){
+    background-color: royalblue;
+}.row > div:nth-child(3){
+    background-color: yellow;
+}
 p{
     color: brown;
 }
