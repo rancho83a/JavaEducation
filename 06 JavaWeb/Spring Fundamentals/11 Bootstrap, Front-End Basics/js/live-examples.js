@@ -107,21 +107,21 @@
 /*
     Example: Objects and properties
 */
-// const objExample = {
-//     a: 1,
-//     b: 2,
-//     c: {
-//         name: 'Simo',
-//         company: 'Blubito'
-//     },
-//     func(){
-//         console.log('FUNCTION')
-//     }
-// };
-// const secondObj = objExample;
-// objExample.c = 'Hi';
-// console.log(objExample)
-// console.log(secondObj)
+const objExample = {
+    a: 1,
+    b: 2,
+    c: {
+        name: 'Simo',
+        company: 'Blubito'
+    },
+    func(){
+        console.log('FUNCTION')
+    }
+};
+const secondObj = objExample;
+objExample.c = 'Hi';
+console.log(objExample)
+console.log(secondObj)
 
 /*
     Example: Cloning objects
@@ -151,7 +151,7 @@
 /*
     Example: Object new property syntaxes
 */
-// objExample.d = 'new prop';
-// const dynamicName = 'simo';
-// objExample[1] = 'new custom prop'
-// console.log(objExample)
+objExample.d = 'new prop';
+const dynamicName = 'simo';
+objExample[1] = 'new custom prop';
+console.log(objExample); 
