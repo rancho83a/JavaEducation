@@ -5,11 +5,13 @@ import com.example.books.model.entity.BookEntity;
 import com.example.books.repository.AuthorRepository;
 import com.example.books.repository.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Component
 public class BookApplicationInit implements CommandLineRunner {
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
@@ -73,16 +75,16 @@ public class BookApplicationInit implements CommandLineRunner {
 
         List<BookEntity> allBooks = new ArrayList<>();
 
-        for (String book: books) {
+        for (String book : books) {
             BookEntity aBook = new BookEntity();
             aBook.setAuthor(author);
             aBook.setTitle(book);
             aBook.setIsbn(UUID.randomUUID().toString());
             allBooks.add(aBook);
+
         }
 
         author.setBooks(allBooks);
-
-        bookRepository.saveAll(allBooks);
+        this.bookRepository.saveAll(allBooks);
     }
 }

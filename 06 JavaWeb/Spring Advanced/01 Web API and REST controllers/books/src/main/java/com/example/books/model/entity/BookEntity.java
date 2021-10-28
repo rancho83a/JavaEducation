@@ -12,7 +12,7 @@ public class BookEntity extends BaseEntity{
     private String title;
     private String isbn;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private AuthorEntity author;
 
 
