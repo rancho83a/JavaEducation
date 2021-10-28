@@ -4,7 +4,9 @@ import bg.softuni.mobilelele.service.BrandService;
 import bg.softuni.mobilelele.service.ModelService;
 import bg.softuni.mobilelele.service.OfferService;
 import bg.softuni.mobilelele.service.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 
