@@ -4,7 +4,10 @@ import com.example.books.model.dto.BookDTO;
 import com.example.books.service.BookService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,5 +45,51 @@ public class BooksController {
     return ResponseEntity.noContent().build();
     }
 
-    
+    @PutMapping()
+    public ResponseEntity<BookDTO> create(@RequestBody BookDTO bookDTO,
+                                          UriComponentsBuilder uriBuilder){
+
+        long bookId = this.bookService.createBook(bookDTO);
+
+        URI location = uriBuilder.path("books/{id}").buildAndExpand(bookId).toUri();
+
+        return ResponseEntity
+                .created(location)
+                .build();
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

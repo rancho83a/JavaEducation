@@ -2,7 +2,9 @@ package com.example.books.service.impl;
 
 import com.example.books.model.dto.AuthorDTO;
 import com.example.books.model.dto.BookDTO;
+import com.example.books.model.entity.AuthorEntity;
 import com.example.books.model.entity.BookEntity;
+import com.example.books.repository.AuthorRepository;
 import com.example.books.repository.BookRepository;
 import com.example.books.service.BookService;
 import org.modelmapper.ModelMapper;
@@ -17,10 +19,13 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
     private final ModelMapper modelMapper;
+    private final AuthorRepository authorRepository;
 
-    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper) {
+
+    public BookServiceImpl(BookRepository bookRepository, ModelMapper modelMapper, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.modelMapper = modelMapper;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -39,6 +44,21 @@ public class BookServiceImpl implements BookService {
     @Override
     public void deleteBookById(Long id) {
         this.bookRepository.deleteById(id);
+    }
+
+    @Override
+    public long createBook(BookDTO bookDTO) {
+
+        AuthorEntity author = this.authorRepository.findByName(bookDTO.getAuthor().getName())
+                .orElseGet(()->
+                    new AuthorEntity().setName(bookDTO.getAuthor().getName()
+                ));
+        this.authorRepository.save(author);
+
+        BookEntity book = modelMapper.map(bookDTO, BookEntity.class);
+        book.setAuthor(author);
+        BookEntity save = this.bookRepository.save(book);
+        return         save.getId();
     }
 
     private BookDTO map(BookEntity book) {
