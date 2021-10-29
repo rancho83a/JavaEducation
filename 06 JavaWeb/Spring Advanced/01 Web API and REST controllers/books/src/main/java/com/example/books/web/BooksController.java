@@ -45,7 +45,7 @@ public class BooksController {
     return ResponseEntity.noContent().build();
     }
 
-    @PutMapping()
+    @PostMapping()
     public ResponseEntity<BookDTO> create(@RequestBody BookDTO bookDTO,
                                           UriComponentsBuilder uriBuilder){
 

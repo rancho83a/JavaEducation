@@ -55,8 +55,10 @@ public class BookServiceImpl implements BookService {
                 ));
         this.authorRepository.save(author);
 
-        BookEntity book = modelMapper.map(bookDTO, BookEntity.class);
-        book.setAuthor(author);
+        BookEntity book = new BookEntity()
+                .setAuthor(author)
+                .setIsbn(bookDTO.getIsbn())
+                .setTitle(bookDTO.getTitle());
         BookEntity save = this.bookRepository.save(book);
         return         save.getId();
     }
