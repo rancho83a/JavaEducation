@@ -49,7 +49,6 @@ public class MobileleUserServiceImpl implements UserDetailsService {
                 .stream()
                 .map(r->new SimpleGrantedAuthority("ROLE_"+ r.getRole().name()))
                  .collect(Collectors.toList());
-                ;
 
         return new User(
                 userEntity.getUsername(),

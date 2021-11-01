@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
                 .setLastName(userRegistrationServiceModel.getLastName())
                 .setActive(true)
                 .setPassword(passwordEncoder.encode(userRegistrationServiceModel.getPassword()))
-                .setRoles(Set.of(userRoleRepository.findByName(UserRoleEnum.USER)));
+                .setRoles(Set.of(userRoleRepository.findByRole(UserRoleEnum.USER)));
 
         newUser =userRepository.save(newUser);
 
@@ -57,8 +57,8 @@ public class UserServiceImpl implements UserService {
     private void initializeUsers() {
         if (userRepository.count() == 0) {
 
-            UserRoleEntity adminRole = userRoleRepository.findByName(UserRoleEnum.ADMIN);
-            UserRoleEntity userRole = userRoleRepository.findByName(UserRoleEnum.USER);
+            UserRoleEntity adminRole = userRoleRepository.findByRole(UserRoleEnum.ADMIN);
+            UserRoleEntity userRole = userRoleRepository.findByRole(UserRoleEnum.USER);
 
             UserEntity admin = new UserEntity();
             admin.setActive(true)

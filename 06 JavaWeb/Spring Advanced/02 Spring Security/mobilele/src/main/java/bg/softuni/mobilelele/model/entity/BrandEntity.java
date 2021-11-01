@@ -12,7 +12,7 @@ public class BrandEntity extends BaseEntity {
 
 
 
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ModelEntity> models;
 
     public BrandEntity() {

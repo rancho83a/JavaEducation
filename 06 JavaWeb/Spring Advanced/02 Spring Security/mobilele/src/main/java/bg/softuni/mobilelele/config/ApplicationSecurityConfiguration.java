@@ -29,7 +29,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 
                 //allow access to all users
-                .antMatchers("/", "/users/login", "/users/registration").permitAll()
+                .antMatchers("/", "/users/login", "/users/register").permitAll()
 
                 //forbid access for unauthenticated users
                 .antMatchers("/**").authenticated()
@@ -55,7 +55,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 .and()
                 .logout()
-                .logoutUrl("/logout")
+                .logoutUrl("/users/logout")
 
                 //whte go to after success logout
                 .logoutSuccessUrl("/")
@@ -64,9 +64,6 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 .invalidateHttpSession(true)
                 //delete the cookies that references my session
                 .deleteCookies("JSESSIONID");
-
-
-
     }
 
     @Override
@@ -75,12 +72,13 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         //1. our user details service that translate username/email/ phoneNumber etc. to UserDetails
         //2. Password encoder -can decide if the user password matches
         auth.userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder);
+
 //registration:
         // topSecretPass-> password encoder - > hashed_pswd (as.fjsldfjsljdf) - отпечатък, по който не мойе да се възстанови паролата
 
         // логин (username, rowPassword)
         // password_encoder.matches(row_password, hashed_pswd)
+                .passwordEncoder(passwordEncoder);
 
     }
 }

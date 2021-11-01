@@ -11,43 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserLoginController {
-    private static Logger LOGGER = LoggerFactory.getLogger(UserLoginController.class);
-    private final UserService userService;
-
-    public UserLoginController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("/users/login")
     public String login() {
         return "auth-login";
     }
-
-    @PostMapping("/users/login")
-    public String login(UserLoginBindingModel userLoginBindingModel) {
-//        LOGGER.info("User tried to login. User name {}, user password {}",
-//                userLoginBindingModel.getUsername(),
-//                userLoginBindingModel.getPassword()
-//
-//        );
-//
-//        boolean loginSuccessful =userService
-//                .login(new UserLoginServiceModel()
-//                        .setUsername(userLoginBindingModel.getUsername())
-//                        .setRowPassword(userLoginBindingModel.getPassword()));
-//        LOGGER.info("User tried to login. User with name {} tried to login. Success = {}",
-//                userLoginBindingModel.getUsername(),
-//               loginSuccessful
-//        );
-//
-//        if(loginSuccessful){
-//            return  "redirect:/";
-//        }
-
-       // return "redirect:/users/login";
-        return "redirect:/index";
-
-    }
-
 
 }
