@@ -40,14 +40,14 @@ public class BooksController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<BookDTO> delete(@PathVariable("id") Long id) {
-    bookService.deleteBookById(id);
+        bookService.deleteBookById(id);
 
-    return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping()
     public ResponseEntity<BookDTO> create(@RequestBody BookDTO bookDTO,
-                                          UriComponentsBuilder uriBuilder){
+                                          UriComponentsBuilder uriBuilder) {
 
         long bookId = this.bookService.createBook(bookDTO);
 
@@ -56,40 +56,24 @@ public class BooksController {
         return ResponseEntity
                 .created(location)
                 .build();
-
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<BookDTO> update(
+            @PathVariable("id") Long id,
+            @RequestBody BookDTO bookDTO,
+            UriComponentsBuilder uriBuilder
+    ) {
+        Long bookId = this.bookService.updateBook(bookDTO);
 
+        URI location = uriBuilder.path("books/{id}").buildAndExpand(bookId).toUri();
 
+        return bookId == null ? ResponseEntity.notFound().build()
+                : ResponseEntity
+                 .created(location)
+                    .build();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
+
+
