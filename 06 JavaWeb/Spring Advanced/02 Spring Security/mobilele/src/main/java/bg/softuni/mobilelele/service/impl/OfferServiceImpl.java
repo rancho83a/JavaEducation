@@ -136,7 +136,8 @@ public class OfferServiceImpl implements OfferService {
         OfferAddServiceModel offerAddServiceModel = modelMapper.map(offerAddBindModel, OfferAddServiceModel.class);
         OfferEntity newOffer = modelMapper.map(offerAddServiceModel, OfferEntity.class);
         newOffer.setCreated(Instant.now());
-        newOffer.setSeller(userRepository.findByUsername(currentUser.getUserName()).orElseThrow());
+       //TODO
+        // newOffer.setSeller(userRepository.findByUsername(currentUser.getUserName()).orElseThrow());
         ModelEntity model = modelRepository.getById(offerAddBindModel.getModelId());
         newOffer.setModel(model);
 

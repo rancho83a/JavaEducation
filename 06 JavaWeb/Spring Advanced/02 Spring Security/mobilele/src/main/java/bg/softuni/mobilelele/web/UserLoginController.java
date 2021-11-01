@@ -30,22 +30,23 @@ public class UserLoginController {
 //                userLoginBindingModel.getPassword()
 //
 //        );
+//
+//        boolean loginSuccessful =userService
+//                .login(new UserLoginServiceModel()
+//                        .setUsername(userLoginBindingModel.getUsername())
+//                        .setRowPassword(userLoginBindingModel.getPassword()));
+//        LOGGER.info("User tried to login. User with name {} tried to login. Success = {}",
+//                userLoginBindingModel.getUsername(),
+//               loginSuccessful
+//        );
+//
+//        if(loginSuccessful){
+//            return  "redirect:/";
+//        }
 
-        boolean loginSuccessful =userService
-                .login(new UserLoginServiceModel()
-                        .setUsername(userLoginBindingModel.getUsername())
-                        .setRowPassword(userLoginBindingModel.getPassword()));
-        LOGGER.info("User tried to login. User with name {} tried to login. Success = {}",
-                userLoginBindingModel.getUsername(),
-               loginSuccessful
-        );
+       // return "redirect:/users/login";
+        return "redirect:/index";
 
-        if(loginSuccessful){
-            return  "redirect:/";
-        }
-
-        return "redirect:/users/login";
-        // return "redirect:/index";
     }
 
 

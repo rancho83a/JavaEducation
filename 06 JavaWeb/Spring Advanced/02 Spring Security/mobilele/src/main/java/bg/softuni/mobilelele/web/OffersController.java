@@ -1,20 +1,20 @@
 package bg.softuni.mobilelele.web;
 
 
+import bg.softuni.mobilelele.model.binding.OfferAddBindModel;
 import bg.softuni.mobilelele.model.binding.OfferUpdateBindingModel;
 import bg.softuni.mobilelele.model.entity.enums.EngineEnum;
 import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
+import bg.softuni.mobilelele.model.service.OfferAddServiceModel;
 import bg.softuni.mobilelele.model.service.OfferUpdateServiceModel;
 import bg.softuni.mobilelele.model.view.OfferDetailsView;
+import bg.softuni.mobilelele.service.BrandService;
 import bg.softuni.mobilelele.service.OfferService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -23,10 +23,12 @@ import javax.validation.Valid;
 public class OffersController {
     private final OfferService offerService;
     private final ModelMapper modelMapper;
+    private final BrandService brandService;
 
-    public OffersController(OfferService offerService, ModelMapper modelMapper) {
+    public OffersController(OfferService offerService, ModelMapper modelMapper, BrandService brandService) {
         this.offerService = offerService;
         this.modelMapper = modelMapper;
+        this.brandService = brandService;
     }
 
     //GET
@@ -94,6 +96,34 @@ public class OffersController {
 
         offerService.updateOffer(serviceModel);
         return "redirect:/offers/" + id + "/details";
+    }
+
+    @GetMapping("/offers/add")
+    public String getAddOfferPage(Model model) {
+        // kind of "Security" to avoid browser address bar direct entry
+        // TODO: This security will be removed soon :-)
+//        if (!currentUser.isLoggedIn()) {
+//            return "redirect:/users/login";
+//        }
+        if (!model.containsAttribute("offerAddBindModel")) {
+            model.
+                    addAttribute("offerAddBindModel", new OfferAddBindModel()).
+                    addAttribute("brandsModels", brandService.getAllBrands());
+        }
+        return "offer-add";
+    }
+
+    @PostMapping("/offers/add")
+    public String addOffer(@Valid OfferAddBindModel offerAddBindModel,
+                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("offerAddBindModel", offerAddBindModel)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.offerAddBindModel", bindingResult)
+                    .addFlashAttribute("brandsModels", brandService.getAllBrands());
+            return "redirect:/offers/add";
+        }
+        OfferAddServiceModel savedOfferAddServiceModel = offerService.addOffer(offerAddBindModel);
+        return "redirect:/offers/" + savedOfferAddServiceModel.getId() + "/details";
     }
 
 
