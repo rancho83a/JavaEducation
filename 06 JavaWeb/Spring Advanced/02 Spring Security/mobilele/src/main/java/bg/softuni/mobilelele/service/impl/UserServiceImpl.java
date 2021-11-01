@@ -83,8 +83,8 @@ public class UserServiceImpl implements UserService {
     private void initializeRoles() {
 
         if (userRoleRepository.count() == 0) {
-            UserRoleEntity adminRole = new UserRoleEntity().setName(UserRoleEnum.ADMIN);
-            UserRoleEntity userRole = new UserRoleEntity().setName(UserRoleEnum.USER);
+            UserRoleEntity adminRole = new UserRoleEntity().setRole(UserRoleEnum.ADMIN);
+            UserRoleEntity userRole = new UserRoleEntity().setRole(UserRoleEnum.USER);
 
             userRoleRepository.saveAll(List.of(adminRole, userRole));
         }

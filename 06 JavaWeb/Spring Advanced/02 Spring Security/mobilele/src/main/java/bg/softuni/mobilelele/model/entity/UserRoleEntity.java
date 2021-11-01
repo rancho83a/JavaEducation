@@ -12,14 +12,14 @@ public class UserRoleEntity {
     private Long id;
 
     @Enumerated(EnumType.ORDINAL)
-    private UserRoleEnum name;
+    private UserRoleEnum role;
 
-    public UserRoleEnum getName() {
-        return name;
+    public UserRoleEnum getRole() {
+        return role;
     }
 
-    public UserRoleEntity setName(UserRoleEnum name) {
-        this.name = name;
+    public UserRoleEntity setRole(UserRoleEnum name) {
+        this.role = name;
         return this;
     }
 
