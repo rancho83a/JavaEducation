@@ -1,5 +1,6 @@
 package bg.softuni.mobilelele.config;
 
+import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -27,8 +28,11 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 //allow access to all static resources
                 .requestMatchers(PathRequest.toStaticResources()
-                        .atCommonLocations())
-        .permitAll()
+                               .atCommonLocations())
+                        // .at(StaticResourceLocation.valueOf("/img/**")))
+                .permitAll()
+
+
 
                 //allow access to all users
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
@@ -76,10 +80,10 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         auth.userDetailsService(userDetailsService)
 
 //registration:
-        // topSecretPass-> password encoder - > hashed_pswd (as.fjsldfjsljdf) - отпечатък, по който не мойе да се възстанови паролата
+                // topSecretPass-> password encoder - > hashed_pswd (as.fjsldfjsljdf) - отпечатък, по който не мойе да се възстанови паролата
 
-        // логин (username, rowPassword)
-        // password_encoder.matches(row_password, hashed_pswd)
+                // логин (username, rowPassword)
+                // password_encoder.matches(row_password, hashed_pswd)
                 .passwordEncoder(passwordEncoder);
 
     }

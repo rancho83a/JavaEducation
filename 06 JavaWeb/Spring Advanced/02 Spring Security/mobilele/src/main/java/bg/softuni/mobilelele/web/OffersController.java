@@ -10,7 +10,9 @@ import bg.softuni.mobilelele.model.service.OfferUpdateServiceModel;
 import bg.softuni.mobilelele.model.view.OfferDetailsView;
 import bg.softuni.mobilelele.service.BrandService;
 import bg.softuni.mobilelele.service.OfferService;
+import bg.softuni.mobilelele.service.impl.MobileleUser;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class OffersController {
@@ -115,14 +118,15 @@ public class OffersController {
 
     @PostMapping("/offers/add")
     public String addOffer(@Valid OfferAddBindModel offerAddBindModel,
-                           BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                           BindingResult bindingResult, RedirectAttributes redirectAttributes,
+                           @AuthenticationPrincipal MobileleUser user) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("offerAddBindModel", offerAddBindModel)
                     .addFlashAttribute("org.springframework.validation.BindingResult.offerAddBindModel", bindingResult)
                     .addFlashAttribute("brandsModels", brandService.getAllBrands());
             return "redirect:/offers/add";
         }
-        OfferAddServiceModel savedOfferAddServiceModel = offerService.addOffer(offerAddBindModel);
+        OfferAddServiceModel savedOfferAddServiceModel = offerService.addOffer(offerAddBindModel, user.getUsername());
         return "redirect:/offers/" + savedOfferAddServiceModel.getId() + "/details";
     }
 

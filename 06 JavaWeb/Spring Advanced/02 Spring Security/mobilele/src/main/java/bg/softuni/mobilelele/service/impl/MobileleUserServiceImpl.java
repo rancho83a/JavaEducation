@@ -50,7 +50,7 @@ public class MobileleUserServiceImpl implements UserDetailsService {
                 .map(r->new SimpleGrantedAuthority("ROLE_"+ r.getRole().name()))
                  .collect(Collectors.toList());
 
-        return new User(
+        return new MobileleUser(
                 userEntity.getUsername(),
                 userEntity.getPassword(),
                 authorities

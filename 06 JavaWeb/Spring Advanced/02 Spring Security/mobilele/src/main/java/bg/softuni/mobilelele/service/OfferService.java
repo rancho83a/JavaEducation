@@ -6,6 +6,7 @@ import bg.softuni.mobilelele.model.service.OfferUpdateServiceModel;
 import bg.softuni.mobilelele.model.view.OfferDetailsView;
 import bg.softuni.mobilelele.model.view.OffersSummaryView;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface OfferService {
@@ -17,5 +18,5 @@ public interface OfferService {
     void deleteOffer(Long id);
 
     void updateOffer(OfferUpdateServiceModel offerModel);
-    public OfferAddServiceModel addOffer(OfferAddBindModel offerAddBindModel);
+    public OfferAddServiceModel addOffer(OfferAddBindModel offerAddBindModel, String ownerId );
 }

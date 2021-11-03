@@ -1,17 +1,19 @@
-.row > div:nth-child(1){
+ .row > div:nth-child(1){
     background-color: rgb(52, 95, 9);
 }
 .row > div:nth-child(2){
     background-color: royalblue;
 }.row > div:nth-child(3){
     background-color: rgb(161, 63, 129);
-}
+} 
 
 [class*="col"]{
+
     padding: 1rem;
+    
     border: 2px solid white;
     color: white;
-    text-align: center;
+    
     background-color: royalblue;
 
 }
@@ -19,3 +21,11 @@
 p{
     color: brown;
 }
+
+.text-primary {
+    --bs-text-opacity: .5;
+    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
+  }
+  .cardBgColor {
+      background-color: #d4b768;
+  }

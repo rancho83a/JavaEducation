@@ -18,9 +18,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.time.Instant;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -132,12 +132,13 @@ public class OfferServiceImpl implements OfferService {
         return summaryView;
     }
     @Override
-    public OfferAddServiceModel addOffer(OfferAddBindModel offerAddBindModel) {
+    public OfferAddServiceModel addOffer(OfferAddBindModel offerAddBindModel, String ownerId) {
         OfferAddServiceModel offerAddServiceModel = modelMapper.map(offerAddBindModel, OfferAddServiceModel.class);
         OfferEntity newOffer = modelMapper.map(offerAddServiceModel, OfferEntity.class);
         newOffer.setCreated(Instant.now());
-       //TODO
-        // newOffer.setSeller(userRepository.findByUsername(currentUser.getUserName()).orElseThrow());
+
+        newOffer.setSeller(userRepository.findByUsername(ownerId).orElseThrow());
+
         ModelEntity model = modelRepository.getById(offerAddBindModel.getModelId());
         newOffer.setModel(model);
 
