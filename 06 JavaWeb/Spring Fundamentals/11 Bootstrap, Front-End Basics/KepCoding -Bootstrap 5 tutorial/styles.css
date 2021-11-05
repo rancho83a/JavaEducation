@@ -18,14 +18,8 @@
 
 }
 
-p{
-    color: brown;
-}
 
-.text-primary {
-    --bs-text-opacity: .5;
-    color: rgba(var(--bs-primary-rgb), var(--bs-text-opacity)) !important;
-  }
+
   .cardBgColor {
       background-color: #d4b768;
   }

@@ -28,11 +28,12 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 //allow access to all static resources
                 .requestMatchers(PathRequest.toStaticResources()
-                               .atCommonLocations())
-                        // .at(StaticResourceLocation.valueOf("/img/**")))
+
+                        .atCommonLocations())
                 .permitAll()
 
 
+                .antMatchers("/img/**").permitAll()
 
                 //allow access to all users
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
@@ -42,7 +43,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 .and()
 
-                //configure login with login HTML form with two inputs field: usernamr and password
+                //configure login with login HTML form with two inputs field: username and password
                 .formLogin()
 
                 //our login page is located here: "http://localhost:8080/users/login"
