@@ -1,5 +1,6 @@
 package bg.softuni.mobilelele.config;
 
+import bg.softuni.mobilelele.model.entity.enums.UserRoleEnum;
 import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +38,8 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 //allow access to all users
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
+
+                .antMatchers("/statistics").hasRole(UserRoleEnum.ADMIN.name())
 
                 //forbid access for unauthenticated users
                 .antMatchers("/**").authenticated()
