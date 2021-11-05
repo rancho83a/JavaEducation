@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    password: mypass
+    url: jdbc:h2:mem:testdb
+    username: root
+  h2:
+    console:
+      enabled: true
+  jpa:
+    #insert to DB some info
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
