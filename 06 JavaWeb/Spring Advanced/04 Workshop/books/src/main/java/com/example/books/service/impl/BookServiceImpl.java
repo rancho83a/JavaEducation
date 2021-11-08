@@ -8,6 +8,10 @@ import com.example.books.repository.AuthorRepository;
 import com.example.books.repository.BookRepository;
 import com.example.books.service.BookService;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,16 +33,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookDTO> getAllBooks() {
+    public List<BookDTO> getBooks() {
         return bookRepository.findAll()
                 .stream()
-                .map(this::map)
+                .map(this::mapToBookDto)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Optional<BookDTO> getBookById(Long id) {
-        return this.bookRepository.findById(id).map(this::map);
+        return this.bookRepository.findById(id).map(this::mapToBookDto);
     }
 
     @Override
@@ -50,9 +54,9 @@ public class BookServiceImpl implements BookService {
     public long createBook(BookDTO bookDTO) {
 
         AuthorEntity author = this.authorRepository.findByName(bookDTO.getAuthor().getName())
-                .orElseGet(()->
-                    new AuthorEntity().setName(bookDTO.getAuthor().getName()
-                ));
+                .orElseGet(() ->
+                        new AuthorEntity().setName(bookDTO.getAuthor().getName()
+                        ));
         this.authorRepository.save(author);
 
         BookEntity book = new BookEntity()
@@ -60,7 +64,7 @@ public class BookServiceImpl implements BookService {
                 .setIsbn(bookDTO.getIsbn())
                 .setTitle(bookDTO.getTitle());
         BookEntity save = this.bookRepository.save(book);
-        return         save.getId();
+        return save.getId();
     }
 
     @Override
@@ -85,8 +89,20 @@ public class BookServiceImpl implements BookService {
         return bookRepository.save(bookEntity).getId();
     }
 
+    @Override
+    public Page<BookDTO> getBooks(Integer pageNo, Integer pageSize, String sortBy) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
 
-    private BookDTO map(BookEntity book) {
+
+
+        return this.bookRepository.findAll(pageable)
+                .map(this::mapToBookDto);
+
+        //http://localhost:8080/books/pageable?pageSize=10&pageNo=0&sortBy=title
+    }
+
+
+    private BookDTO mapToBookDto(BookEntity book) {
         BookDTO bookDTO = modelMapper.map(book, BookDTO.class);
         AuthorDTO author = modelMapper.map(book.getAuthor(), AuthorDTO.class);
 

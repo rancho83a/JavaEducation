@@ -2,9 +2,9 @@ package com.example.books.web;
 
 import com.example.books.model.dto.BookDTO;
 import com.example.books.service.BookService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -23,7 +23,7 @@ public class BooksController {
 
     @GetMapping
     public ResponseEntity<List<BookDTO>> getAllBooks() {
-        List<BookDTO> allBooks = this.bookService.getAllBooks();
+        List<BookDTO> allBooks = this.bookService.getBooks();
         return ResponseEntity.ok(allBooks);
     }
 
@@ -70,9 +70,19 @@ public class BooksController {
 
         return bookId == null ? ResponseEntity.notFound().build()
                 : ResponseEntity
-                 .created(location)
-                    .build();
+                .created(location)
+                .build();
 
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<Page<BookDTO>> getAllBooks(
+            @RequestParam(name = "pageNo", defaultValue = "0") Integer pageNo,
+            @RequestParam(name = "pageSize", defaultValue = "3") Integer pageSize,
+            @RequestParam(name = "sortBy", defaultValue = "id") String sortBy
+    ) {
+        return ResponseEntity.ok(
+                this.bookService.getBooks(pageNo, pageSize, sortBy));
     }
 }
 
