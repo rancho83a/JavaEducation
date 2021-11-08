@@ -7,5 +7,20 @@
 </head>
 <body>
 
+<div th:each="p : ${pictures}" th:object="${p}"
+
+>
+    <img th:src="*{url}" th:alt="*{title}"/> </br>
+    <form
+            th:method="delete"
+            th:action="@{/picture/delete}">
+        <input type="hidden" name="public_id" th:value="*{publicId}"/>
+        <input type="submit" th:value="Delete"/>
+
+    </form>
+
+
+</div>
+
 </body>
 </html>
