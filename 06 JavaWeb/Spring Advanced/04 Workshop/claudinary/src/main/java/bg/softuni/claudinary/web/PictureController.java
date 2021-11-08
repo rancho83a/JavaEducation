@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
@@ -24,13 +23,38 @@ public class PictureController {
     private final CloudinaryService cloudinaryService;
 
     //do not use this directly in controller
-    public final PictureRepository pictureRepository;
+    private final PictureRepository pictureRepository;
 
     public PictureController(CloudinaryService cloudinaryService, PictureRepository pictureRepository) {
         this.cloudinaryService = cloudinaryService;
-
         this.pictureRepository = pictureRepository;
     }
+
+    @GetMapping("/pictures/all")
+    public String all(Model model) {
+
+        List<PictureViewModel> pictures = this.pictureRepository.findAll()
+                .stream()
+                .map(this::mapToViewModel)
+                .collect(Collectors.toList());
+
+        model.addAttribute("pictures", pictures);
+
+        return "all";
+    }
+//
+//    @GetMapping("/pictures/all")
+//    public String all(Model model) {
+//        List<PictureViewModel> pictures = pictureRepository.
+//                findAll().
+//                stream().
+//                map(this::mapToViewModel).
+//                collect(Collectors.toList());
+//
+//        model.addAttribute("pictures", pictures);
+//
+//        return "all";
+//    }
 
     @GetMapping("/pictures/add")
     public String addPicture() {
@@ -46,21 +70,9 @@ public class PictureController {
         return "redirect:/pictures/all";
     }
 
-    @GetMapping("/pictures/all")
-    private String all(Model model) {
 
-        List<PictureViewModel> pictures = pictureRepository
-                .findAll()
-                .stream()
-                .map(this::map)
-                .collect(Collectors.toList());
 
-        model.addAttribute("pictures", pictures);
-
-        return "all";
-    }
-
-    private PictureViewModel map(PictureEntity p) {
+    private PictureViewModel mapToViewModel(PictureEntity p) {
         return new PictureViewModel().setPublicId(p.getPublicId()).setTitle(p.getTitle()).setUrl(p.getUrl());
     }
 
