@@ -1,0 +1,78 @@
+html,body {
+    height: 100%;
+    font-size: 1rem;
+}
+.gradient{
+    background: rgb(3,20,48);
+    background: linear-gradient(90deg, rgba(3,20,48,0.9808298319327731) 0%, rgba(212,183,104,0.9780287114845938) 100%);
+}
+.page-header{
+/* otstyp sverhy */
+    margin-top: 4.5rem;
+
+    font-size: 1.25rem;
+    color: aliceblue;
+    font-family: 'Crimson Text', serif;
+    letter-spacing: 1.25px;    
+}
+.companies{
+    /* margin-top: -12rem; */
+    padding-bottom: 3rem;
+}
+
+.feature{
+    color: aliceblue;
+}
+.feature ul {
+    padding-left: 2rem;
+    list-style-type: none;
+}
+.feature ul li{
+    padding-left: 2rem;
+    background-image: url(/images/svg/check2-circle.svg);
+    background-repeat: no-repeat;
+    line-height: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.icon{
+    color: #fff;
+    height: 5rem;
+    width: 5rem;
+    font-size: 2rem;
+    border-radius: 100%;
+    box-shadow: 4px 4px 17px  grey;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.gallery{
+    background-color: whitesmoke;
+}
+
+.gallery img{
+    border-radius: 5%;
+}
+
+.service{
+    color: white;
+
+}
+
+
+footer{
+    color: white;
+    font-size: 1.5rem;
+    margin-top:1rem;
+}
+
+a{
+    color: white;
+text-decoration: none;
+}
+
+.disclaimer {
+    padding:4rem;
+                      background: url(/images/disclaimer.png) center no-repeat;
+                    
+             }

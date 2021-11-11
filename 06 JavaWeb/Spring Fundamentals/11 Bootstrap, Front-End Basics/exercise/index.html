@@ -1,76 +1,295 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Lecture JS & Bootstrap</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+
+  <title>Portfolio</title>
 </head>
 
 <body>
-  <header></header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="/images/logo_small.png" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pricing</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-  <main>
-    <p>Hello world! This is HTML5 Boilerplate!!!</p>
+  <header class="page-header gradient">
 
-    <h1 class="h1">Wellcome to store!</h1>
+    <div class="container pt-3 pb-3">
+      <!-- otstyp vnytri elementi imeut padding-->
+      <div class="row align-items-center justify-content-center">
+
+        <div class="col-md-6">
+          <h2>Real trade. True results</h2>
+          <p>The Fund Management that we provide is implemented through percent allocation management module which
+            allows Investors to have their accounts managed by a trader appointed by them on the basis of a limited
+            trading power of attorney. This technical solution allows the Master trader on one trading platform to
+            manage simultaneously unlimited quantity of Investor managed accounts.</p>
+          <button type="button" class="btn btn-outline-warning btn-lg">Become investor </button>
+          <button type="button" class="btn btn-outline-warning btn-lg">Become trader </button>
+        </div>
+
+        <div class="col-md-6 ps-5"><img src="/images/logo.png" alt="Header image"></div>
+
+      </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 280">
+      <path fill="white" fill-opacity="2"
+        d="M0,0L48,42.7C96,85,192,171,288,170.7C384,171,480,85,576,80C672,75,768,149,864,149.3C960,149,1056,75,1152,85.3C1248,96,1344,192,1392,240L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+      </path>
+    </svg>
+  </header>
+
+  <section class="companies">
+    <div class="container text-center">
+      <div class="row g-5">
+        <div class="col-md-2"><img src="/images/svg/Facebook.svg" alt="sign" class="img-fluid"></div>
+        <div class="col-md-2"><img src="/images/svg/case.svg" alt="sign" class="img-fluid"></div>
+        <div class="col-md-2"><img src="/images/svg/Instagram.svg" alt="sign" class="img-fluid"></div>
+        <div class="col-md-2"><img src="/images/svg/Telegram_logo.svg" alt="sign" class="img-fluid"></div>
+        <div class="col-md-2"><img src="/images/svg/YouTube_Logo.svg" alt="sign" class="img-fluid"></div>
+        <div class="col-md-2"><img src="/images/svg/case.svg" alt="sign" class="img-fluid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="feature gradient">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="white" fill-opacity="1"
+        d="M0,320L48,304C96,288,192,256,288,213.3C384,171,480,117,576,133.3C672,149,768,235,864,272C960,309,1056,299,1152,256C1248,213,1344,139,1392,101.3L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z">
+      </path>
+    </svg>
 
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          
-    <article class="card" >
-      <img src="https://www.svgrepo.com/show/42266/credit-card.svg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </article>
+      <div class="row py-4 align-items-center justify-content-center">
+        <div class="col-md-6"><img src="/images/invest_wisely_4.jpg" alt=""></div>
 
+        <div class="col-md-6">
+          <h1>Intoduction Forex</h1>
+          <p class="my-4">
+            The investing activity involves the assets purchase in order to get such a profit that would lead to the
+            development of a long-time asset. If you want to succeed in this, you should invest in products which
+            returns are at least equal with the inflation rate. Forex Trading is one of the most popular methods for
+            smart investing.
+          </p>
+          <ul>
+            <li>Rule 1</li>
+            <li>Rule 2</li>
+            <li>Rule 3</li>
+            <li>Rule 4</li>
+          </ul>
         </div>
-
-        <div class="col-sm-6 col-md-4">
-          
-    <article class="card" >
-      <img src="https://www.svgrepo.com/show/42266/credit-card.svg" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </article>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-          <article class="card" >
-            <img src="https://www.svgrepo.com/show/42266/credit-card.svg" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </article></div>
       </div>
     </div>
 
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
+      <path fill="white" fill-opacity="1"
+        d="M0,0L48,5.3C96,11,192,21,288,53.3C384,85,480,139,576,138.7C672,139,768,85,864,90.7C960,96,1056,160,1152,181.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
+      </path>
+    </svg>
+  </section>
+
+  <section class="icons">
+
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="icon gradient mb-4">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trophy"
+              viewBox="0 0 16 16">
+              <path
+                d="M2.5.5A.5.5 0 0 1 3 0h10a.5.5 0 0 1 .5.5c0 .538-.012 1.05-.034 1.536a3 3 0 1 1-1.133 5.89c-.79 1.865-1.878 2.777-2.833 3.011v2.173l1.425.356c.194.048.377.135.537.255L13.3 15.1a.5.5 0 0 1-.3.9H3a.5.5 0 0 1-.3-.9l1.838-1.379c.16-.12.343-.207.537-.255L6.5 13.11v-2.173c-.955-.234-2.043-1.146-2.833-3.012a3 3 0 1 1-1.132-5.89A33.076 33.076 0 0 1 2.5.5zm.099 2.54a2 2 0 0 0 .72 3.935c-.333-1.05-.588-2.346-.72-3.935zm10.083 3.935a2 2 0 0 0 .72-3.935c-.133 1.59-.388 2.885-.72 3.935zM3.504 1c.007.517.026 1.006.056 1.469.13 2.028.457 3.546.87 4.667C5.294 9.48 6.484 10 7 10a.5.5 0 0 1 .5.5v2.61a1 1 0 0 1-.757.97l-1.426.356a.5.5 0 0 0-.179.085L4.5 15h7l-.638-.479a.501.501 0 0 0-.18-.085l-1.425-.356a1 1 0 0 1-.757-.97V10.5A.5.5 0 0 1 9 10c.516 0 1.706-.52 2.57-2.864.413-1.12.74-2.64.87-4.667.03-.463.049-.952.056-1.469H3.504z" />
+            </svg>
+          </div>
+          <h3>Forex for beginners</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum architecto exercitationem quos dolores
+            officia obcaecati aperiam illum neque placeat culpa.</p>
+
+        </div>
 
 
-  </main>
+        <div class="col-md-4">
+          <div class="icon gradient mb-4">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-currency-euro" viewBox="0 0 16 16">
+              <path
+                d="M4 9.42h1.063C5.4 12.323 7.317 14 10.34 14c.622 0 1.167-.068 1.659-.185v-1.3c-.484.119-1.045.17-1.659.17-2.1 0-3.455-1.198-3.775-3.264h4.017v-.928H6.497v-.936c0-.11 0-.219.008-.329h4.078v-.927H6.618c.388-1.898 1.719-2.985 3.723-2.985.614 0 1.175.05 1.659.177V2.194A6.617 6.617 0 0 0 10.341 2c-2.928 0-4.82 1.569-5.244 4.3H4v.928h1.01v1.265H4v.928z" />
+            </svg>
+          </div>
+          <h3>Forex for Profi</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum architecto exercitationem quos dolores
+            officia obcaecati aperiam illum neque placeat culpa.</p>
+
+        </div>
+
+        <div class="col-md-4">
+          <div class="icon gradient mb-4">
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-currency-dollar" viewBox="0 0 16 16">
+              <path
+                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z" />
+            </svg>
+          </div>
+          <h3>Forex for Advanced</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum architecto exercitationem quos dolores
+            officia obcaecati aperiam illum neque placeat culpa.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="gallery">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
+      <path fill="white" fill-opacity="1"
+        d="M0,128L60,128C120,128,240,128,360,122.7C480,117,600,107,720,117.3C840,128,960,160,1080,176C1200,192,1320,192,1380,192L1440,192L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+      </path>
+    </svg>
+    <div class="container">
+      <div class="row t">
+        <div class="col-md-10">
+          <h1 class="text-center">The best results ever! </h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nobis autem sequi architecto assumenda
+            quam ad aperiam mollitia placeat facilis esse ea inventore repellat minima. Illo corrupti ducimus
+            voluptatibus eos?</p>
+        </div>
+      </div>
+
+      <div class="row my-3 g-3">
+        <div class="col-md-4"><img src="/images/invest_wisely_1.jpg" alt="Gallery imag" class="img-fluid"></div>
+        <div class="col-md-4"><img src="/images/invest_wisely_2.jpg" alt="Gallery imag" class="img-fluid"></div>
+        <div class="col-md-4"><img src="/images/invest_wisely_3.jpg" alt="Gallery imag" class="img-fluid"></div>
+      </div>
+
+      <div class="row mt-4 justify-content-end">
+        <div class="col-md-2">
+          <button type="button" class="btn btn-outline-secondary">See all position</button>
+
+        </div>
+      </div>
+
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150">
+      <path fill="white" fill-opacity="1"
+        d="M0,128L120,112C240,96,480,64,720,64C960,64,1200,96,1320,112L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
+      </path>
+    </svg>
+  </section>
+
+  <section class="service gradient">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 50 1440 220"><path fill="white" fill-opacity="1" d="M0,192L60,192C120,192,240,192,360,170.7C480,149,600,107,720,122.7C840,139,960,213,1080,224C1200,235,1320,181,1380,154.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+    <div class="container">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-5">
+          <button type="button" class="btn btn-outline-warning">Warning</button>
+          <h1>We are started</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A ut ducimus aperiam dolore quas quisquam,
+            eligendi beatae eaque nisi eveniet?</p>
+        </div>
+        <div class="col-md-5"><img src="/images/rules-01.jpg" alt=""></div>
+        <div class="col-md-5"><img src="/images/rules-2.jpg" alt=""></div>
+        <div class="col-md-5">
+          <button type="button" class="btn btn-outline-success">Warning</button>
+          <h1>We are started</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A ut ducimus aperiam dolore quas quisquam,
+            eligendi beatae eaque nisi eveniet?</p>
+        </div>
+        <div class="col-md-5">
+          <button type="button" class="btn btn-outline-success">Warning</button>
+          <h1>We are started</h1>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. A ut ducimus aperiam dolore quas quisquam,
+            eligendi beatae eaque nisi eveniet?</p>
+        </div>
+        <div class="col-md-5"><img src="/images/rules-33.jpg" alt=""></div>
+      </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 20 1440 250"><path fill="white" fill-opacity="1" d="M0,192L60,208C120,224,240,256,360,240C480,224,600,160,720,154.7C840,149,960,203,1080,202.7C1200,203,1320,149,1380,122.7L1440,96L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+
+  </section>
+
+  <section class="contact">
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-5">
+      <h1>Contact us</h1>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.g. name@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <button type="button" class="btn btn-secondary">Send</button>
+    </div>
+    <div class="col-md-5">
+      <img src="/images/bg-contacts.jpg" alt="" class="img-fluid">
+    </div>
+    
+  </div>
+</div>
+  </section>
+<footer class="gradient">
+  <div class="container-fluid text-center">
+  <p  class="disclaimer">Made by Master <a href="https://copy.com"> CopyTradingForex</a></p>
+  </div>
+
+
+</footer>
+
+
+
+
+
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-  <script src="js/main.js"></script>
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>

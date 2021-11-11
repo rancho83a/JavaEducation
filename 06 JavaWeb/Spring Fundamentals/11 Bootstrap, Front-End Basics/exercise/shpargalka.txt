@@ -1,1 +1,4 @@
 class="container-fuild"  - по всей ширине екрана
+justify-content-end  - menu right side
+fixed-top  - закрепить сверху - при прокручивании
+https://cssgradient.io/  - gradient
