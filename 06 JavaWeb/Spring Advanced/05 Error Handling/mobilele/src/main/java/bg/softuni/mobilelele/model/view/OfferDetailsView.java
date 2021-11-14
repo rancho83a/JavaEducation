@@ -40,6 +40,9 @@ public class OfferDetailsView {
 
     private Long id;
 
+    //TODO - during mapping from entity to ViewModel set this property for future using in HTML (hide or show buttons DELETE/UPDATE)
+    private boolean isOwnerOrAdmin;
+
     public OfferDetailsView() {
     }
 
