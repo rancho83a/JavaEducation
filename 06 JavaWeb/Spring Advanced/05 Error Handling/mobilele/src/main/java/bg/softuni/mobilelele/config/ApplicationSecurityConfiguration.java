@@ -1,7 +1,6 @@
 package bg.softuni.mobilelele.config;
 
 import bg.softuni.mobilelele.model.entity.enums.UserRoleEnum;
-import org.springframework.boot.autoconfigure.security.StaticResourceLocation;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
