@@ -1,6 +1,7 @@
 package bg.softuni.errors.web;
 
 import bg.softuni.errors.exception.ObjectNotFoundException;
+import bg.softuni.errors.exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,7 +17,7 @@ public class ProductController {
     ) {
 
         //this.productRepository.findById(id).orElseThrow(new ProductNotFoundException);
-        throw new ObjectNotFoundException(productId);
+        throw new ProductNotFoundException(productId);
     }
 
     @GetMapping("/products/{id}/error")
@@ -28,13 +29,13 @@ public class ProductController {
         throw new NullPointerException();
     }
 
-//    // Work only in this Controller
-//    @ExceptionHandler({ObjectNotFoundException.class})
-//    public ModelAndView handleDBException(ObjectNotFoundException e) {
-//
-//        ModelAndView modelAndView = new ModelAndView("product-not-found");
-//        modelAndView.addObject("productId", e.getProductId());
-//        modelAndView.setStatus(HttpStatus.NOT_FOUND);
-//        return modelAndView;
-//    }
+    // Work only in this Controller
+    @ExceptionHandler({ProductNotFoundException.class})
+    public ModelAndView handleDBException(ProductNotFoundException e) {
+
+        ModelAndView modelAndView = new ModelAndView("product-not-found");
+        modelAndView.addObject("productId", e.getProductId());
+        modelAndView.setStatus(HttpStatus.NOT_FOUND);
+        return modelAndView;
+    }
 }
