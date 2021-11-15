@@ -145,7 +145,7 @@ public class OfferServiceImpl implements OfferService {
 
     private OfferDetailsView mapToDetailView(String currentUser, OfferEntity offerEntity) {
         OfferDetailsView offerDetails = modelMapper.map(offerEntity, OfferDetailsView.class);
-        offerDetails.setCanDeleteOrUpdate(offerEntity.getSeller().getUsername().equalsIgnoreCase(currentUser));
+        offerDetails.setCanDeleteOrUpdate(isOwner(currentUser,offerEntity.getId()));
         offerDetails.setModel(offerEntity.getModel().getName());
         offerDetails.setBrand(offerEntity.getModel().getBrand().getName());
         offerDetails.setSellerFullName(offerEntity.getSeller().getFirstName() + " " + offerEntity.getSeller().getLastName());
