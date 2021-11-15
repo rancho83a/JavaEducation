@@ -39,11 +39,19 @@ public class OfferDetailsView {
     private String brand;
 
     private Long id;
-
-    //TODO - during mapping from entity to ViewModel set this property for future using in HTML (hide or show buttons DELETE/UPDATE)
-    private boolean isOwnerOrAdmin;
+    //during mapping from entity to ViewModel set this property for future using in HTML (hide or show buttons DELETE/UPDATE)
+    private boolean canDeleteOrUpdate;
 
     public OfferDetailsView() {
+    }
+
+    public boolean isCanDeleteOrUpdate() {
+        return canDeleteOrUpdate;
+    }
+
+    public OfferDetailsView setCanDeleteOrUpdate(boolean canDeleteOrUpdate) {
+        this.canDeleteOrUpdate = canDeleteOrUpdate;
+        return this;
     }
 
     public String getDescription() {

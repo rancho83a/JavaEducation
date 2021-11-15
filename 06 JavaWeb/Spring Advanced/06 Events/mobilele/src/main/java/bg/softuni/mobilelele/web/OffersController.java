@@ -45,8 +45,9 @@ public class OffersController {
 
     //DETAILS
     @GetMapping("/offers/{id}/details")
-    public String showOffer(@PathVariable Long id, Model model) {
-        model.addAttribute("offer", this.offerService.findById(id));
+    public String showOffer(@PathVariable Long id, Model model,
+                            @AuthenticationPrincipal MobileleUser currentUser) {
+        model.addAttribute("offer", this.offerService.findById(id, currentUser.getUserIdentifier()));
         return "details";
     }
 
@@ -70,11 +71,13 @@ public class OffersController {
     }
 
     //UPDATE
+    //@PreAuthorize("isOwner(#id)")
     @GetMapping("/offers/{id}/edit")
-    public String editOffer(@PathVariable Long id, Model model) {
+    public String editOffer(@PathVariable Long id, Model model,
+                            @AuthenticationPrincipal MobileleUser currentUser) {
 
         //для визуализации данних в полях для редактирования оферти
-        OfferDetailsView offerDetailsView = offerService.findById(id);
+        OfferDetailsView offerDetailsView = offerService.findById(id, currentUser.getUserIdentifier());
         OfferUpdateBindingModel offerModel = modelMapper.map(offerDetailsView, OfferUpdateBindingModel.class);
 //добавляем падающее меню ili smotri pathfinder - directly path from resources
         model.addAttribute("engines", EngineEnum.values());

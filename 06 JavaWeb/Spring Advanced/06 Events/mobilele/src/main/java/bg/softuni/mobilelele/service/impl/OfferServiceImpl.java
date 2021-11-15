@@ -90,9 +90,9 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public OfferDetailsView findById(Long id) {
+    public OfferDetailsView findById(Long id, String currentUser) {
         OfferEntity offerEntity = offerRepository.findById(id).get();
-        OfferDetailsView offerDetails = mapToDetailView(offerEntity);
+        OfferDetailsView offerDetails = mapToDetailView(currentUser, offerEntity);
 
         return offerDetails;
     }
@@ -143,8 +143,9 @@ public class OfferServiceImpl implements OfferService {
 
     }
 
-    private OfferDetailsView mapToDetailView(OfferEntity offerEntity) {
+    private OfferDetailsView mapToDetailView(String currentUser, OfferEntity offerEntity) {
         OfferDetailsView offerDetails = modelMapper.map(offerEntity, OfferDetailsView.class);
+        offerDetails.setCanDeleteOrUpdate(offerEntity.getSeller().getUsername().equalsIgnoreCase(currentUser));
         offerDetails.setModel(offerEntity.getModel().getName());
         offerDetails.setBrand(offerEntity.getModel().getBrand().getName());
         offerDetails.setSellerFullName(offerEntity.getSeller().getFirstName() + " " + offerEntity.getSeller().getLastName());

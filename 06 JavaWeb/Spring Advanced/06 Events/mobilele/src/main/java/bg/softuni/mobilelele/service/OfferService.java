@@ -14,7 +14,8 @@ public interface OfferService {
 
     List<OffersSummaryView> getAllOffers();
 
-    OfferDetailsView findById(Long id);
+    OfferDetailsView findById(Long id, String currentUser);
+
     void deleteOffer(Long id);
 
     boolean isOwner(String username, Long id);
