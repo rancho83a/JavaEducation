@@ -114,7 +114,7 @@ public class OfferServiceImpl implements OfferService {
         UserEntity owner = ownOpt.get();
 
 
-        return isAdmin(owner) || offerEntity.getSeller().getUsername().equalsIgnoreCase(username);
+        return isAdmin(owner) || offerEntity.getSeller().getUsername().equals(username);
     }
 
     private boolean isAdmin(UserEntity user) {
