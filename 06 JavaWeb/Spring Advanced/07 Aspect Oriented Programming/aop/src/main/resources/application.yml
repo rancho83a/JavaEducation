@@ -1,0 +1,4 @@
+#Beans from basic.package don`t initialize
+examples:
+  basic.enabled: false
+  modifying.enabled: false
