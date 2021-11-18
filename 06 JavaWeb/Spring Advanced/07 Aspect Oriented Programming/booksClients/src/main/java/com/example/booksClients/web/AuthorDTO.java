@@ -16,4 +16,11 @@ public class AuthorDTO {
         this.name = name;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "AuthorDTO{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

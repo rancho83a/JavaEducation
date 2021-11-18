@@ -47,4 +47,14 @@ public class BookDTO {
         this.isbn = isbn;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "BookDTO{" +
+                "author=" + author +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", isbn='" + isbn + '\'' +
+                '}';
+    }
 }
