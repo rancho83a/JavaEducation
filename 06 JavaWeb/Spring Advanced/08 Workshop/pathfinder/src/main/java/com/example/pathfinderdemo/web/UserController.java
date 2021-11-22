@@ -32,12 +32,6 @@ public class UserController {
         return new UserRegisterBindingModel();
     }
 
-    @ModelAttribute
-    public UserLoginBindingModel userLoginBindingModel(){
-        return new UserLoginBindingModel();
-    }
-
-
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -72,13 +66,7 @@ public class UserController {
         return "redirect:login";
     }
 
-    @GetMapping("/login")
-    public String login(Model model) {
-        if(!model.containsAttribute("isExistUser")){
-            model.addAttribute("isExistUser", true);
-        }
-        return "login";
-    }
+
 
 
     @GetMapping("/profile/{id}")

@@ -9,10 +9,12 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Service
 public class PathfinderUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
@@ -35,7 +37,7 @@ public class PathfinderUserDetailsService implements UserDetailsService {
         Set<GrantedAuthority> grantedAuthorities =
                 user.getRoles()
                         .stream()
-                        .map(r-> new SimpleGrantedAuthority("Role_"+ r.getRole().name()))
+                        .map(r-> new SimpleGrantedAuthority("ROLE_"+ r.getRole().name()))
                         .collect(Collectors.toUnmodifiableSet());
 
 

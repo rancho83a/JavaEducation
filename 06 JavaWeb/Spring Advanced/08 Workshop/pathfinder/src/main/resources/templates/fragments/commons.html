@@ -1,6 +1,8 @@
-<html lang="en">
-
-<head th:fragment ="head">
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pathfinder</title>
@@ -17,55 +19,48 @@
           crossorigin=""></script>
 </head>
 <body>
-
 <header th:fragment="navigation">
   <nav class="main-nav">
     <ul>
-    <th:block >
-
-      <li>
-        <a href="/">Home</a>
-      </li>
-      <li>
-        <a href="/users/login">Login</a>
-      </li>
-      <li>
-        <a href="/users/register">Register</a>
-      </li>
-      <li>
-        <a href="/about">About</a>
-      </li>
-      <li>
-    </th:block>
-
-      <th:block>
-
-        <a href="/routes/add">Add new route</a>
+      <th:block sec:authorize="!isAuthenticated()">
+        <li>
+          <a href="/">Home</a>
         </li>
         <li>
-        <!--  <a th:href="@{/users/profile/{id}(id=${@currentUser.id})  }">Profile</a>  -->
-          <a href="#">Profile</a>
-         <!-- <a th:href="@{/users/profile/{id}(id= *{id})  }">Profile</a> -->
+          <a href="/users/login">Login</a>
         </li>
         <li>
-          <a href="/admin">Admin</a>
+          <a href="/users/register">Register</a>
+        </li>
+        <li>
+          <a href="/about">About</a>
+        </li>
+      </th:block>
+      <th:block sec:authorize="isAuthenticated()">
+        <li>
+          <a href="/routes/add">Add new route</a>
+        </li>
+        <li>
+          <!--                    <a th:href="@{/users/profile/{id}(id = ${@currentUser.id})}">Profile</a>-->
+          <a href="/">Profile</a>
+        </li>
+        <li>
+          <a href="/">Admin</a>
         </li>
         <li>
           <a href="/users/logout">Logout</a>
         </li>
       </th:block>
-
     </ul>
   </nav>
 </header>
 
-<footer  th:fragment="footer" class="footer bg-blur rounded">
+<footer th:fragment="footer" class="footer bg-blur rounded">
   <div class="container-fluid text-center">
     <div class="h5 text-white">
       &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
     </div>
   </div>
 </footer>
-
 </body>
 </html>
