@@ -11,6 +11,7 @@ import com.example.pathfinderdemo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ public class RouteServiceImpl implements RouteService {
         this.categoryService = categoryService;
     }
 
+    @Transactional
     @Override
     public List<RouteViewModel> getAllRoutesView() {
         return this.routeRepository.findAll()
@@ -58,12 +60,13 @@ public class RouteServiceImpl implements RouteService {
                         .stream()
                         // .map(categoryEnum -> this.categoryService.findCategoryByCategoryName(categoryEnum))
                         .map(this.categoryService::findCategoryByCategoryName)
-                        .collect(Collectors.toSet())
+                        .collect(Collectors.toList())
         );
         this.routeRepository.save(newRoute);
 
     }
 
+    @Transactional
     @Override
     public RouteDetailsViewModel findRouteById(Long id) {
         RouteEntity route = this.routeRepository.findById(id).orElse(null);

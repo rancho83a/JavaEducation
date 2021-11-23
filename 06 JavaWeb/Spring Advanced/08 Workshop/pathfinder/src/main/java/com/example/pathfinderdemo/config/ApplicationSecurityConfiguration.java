@@ -37,6 +37,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
                 //allow access to all users
                 .antMatchers("/", "/users/login", "/users/register").permitAll()
+                .antMatchers("routes/api/**").permitAll()
 
                 //.antMatchers("/statistics").hasRole(RoleEnum.ADMIN.name())
 

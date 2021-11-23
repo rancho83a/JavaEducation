@@ -124,6 +124,10 @@ INSERT INTO routes_categories VALUES (4,4);
 INSERT INTO routes_categories VALUES (5,1);
 INSERT INTO routes_categories VALUES (5,2);
 
+INSERT INTO comments (`approved`, `created`, `text_content`, `author_id`, `route_id`)
+VALUES
+    (1, '2021-11-14 08:10:40', X'457874726120636F6F6C20726F75746521', 1, 1),
+    (0, '2021-11-14 08:10:40', X'496E6372656469626C65', 1, 1);
 
 
 INSERT INTO pictures(title, url, author_id, route_id)

@@ -3,6 +3,7 @@ package com.example.pathfinderdemo.model.entity;
 import com.example.pathfinderdemo.model.entity.enums.LevelEnum;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,30 +16,41 @@ public class RouteEntity extends BaseEntity {
     private String name;
     private String videoUrl;
     private UserEntity author;
+    private List<CommentEntity> comments;
 
-    private Set<CategoryEntity> categories;
+    private List<CategoryEntity> categories;
 
-    private Set<PictureEntity> pictures;
+    private List<PictureEntity> pictures;
 
     public RouteEntity() {
     }
 
-    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
-    public Set<PictureEntity> getPictures() {
+    @OneToMany(mappedBy = "route",fetch = FetchType.LAZY)
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public RouteEntity setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    public List<PictureEntity> getPictures() {
         return pictures;
     }
 
-    public RouteEntity setPictures(Set<PictureEntity> pictures) {
+    public RouteEntity setPictures(List<PictureEntity> pictures) {
         this.pictures = pictures;
         return this;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<CategoryEntity> getCategories() {
+    @ManyToMany(fetch = FetchType.LAZY)
+    public List<CategoryEntity> getCategories() {
         return categories;
     }
 
-    public RouteEntity setCategories(Set<CategoryEntity> categories) {
+    public RouteEntity setCategories(List<CategoryEntity> categories) {
         this.categories = categories;
         return this;
     }
