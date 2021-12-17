@@ -6,19 +6,13 @@ import bg.softuni.mobilelele.model.entity.enums.TransmissionEnum;
 import java.math.BigDecimal;
 
 public class OfferUpdateServiceModel {
-
     private Long id;
-
     private String description;
-
     private EngineEnum engine;
     private String imageUrl;
-
     private Integer mileage;
     private BigDecimal price;
-
     private TransmissionEnum transmission;
-
     private Integer year;
 
     public OfferUpdateServiceModel() {

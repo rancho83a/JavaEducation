@@ -28,7 +28,7 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public CommentViewModel createComment(CommentServiceModel commentServiceModel) {
 //TODO
-        throw new UnsupportedOperationException("Not YET")
+        throw new UnsupportedOperationException("Not YET");
     }
 
     @Transactional

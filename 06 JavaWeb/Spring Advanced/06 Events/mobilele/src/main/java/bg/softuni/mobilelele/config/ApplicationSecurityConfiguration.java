@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.transaction.Transactional;
+
 @Configuration
 public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
@@ -76,6 +78,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
     }
 
     @Override
+    @Transactional
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //this gives to spring 2 impotent components:
         //1. our user details service that translate username/email/ phoneNumber etc. to UserDetails
