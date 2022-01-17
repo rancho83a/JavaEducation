@@ -43,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public BigDecimal getTotalProductsSum() {
-        return this.productRepository.TotalProductsSum();
+        return this.productRepository.totalProductsSum();
     }
 
     @Override

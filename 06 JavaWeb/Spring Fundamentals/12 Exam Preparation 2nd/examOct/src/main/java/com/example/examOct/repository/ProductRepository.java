@@ -14,8 +14,8 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductEntity, Long> {
 
-    @Query("SELECT  SUM(p.price) FROM ProductEntity p ")
-    BigDecimal TotalProductsSum();
+    @Query("SELECT  SUM(p.price) FROM ProductEntity p")
+    BigDecimal totalProductsSum();
 
     List<ProductEntity> findAllByCategory_Name(CategoryNameEnum categoryName);
 }
